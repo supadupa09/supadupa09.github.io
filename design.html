@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Design — Supriya Krishnan</title>
+<meta name="description" content="Architectural and urban design work by Supriya Krishnan — built, proposed, and academic.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,300..900,0..100,0..1;1,9..144,300..900,0..100,0..1&family=IBM+Plex+Sans:wght@300;400;500&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+
+<style>
+:root{--paper:#f3efe6;--paper-2:#ebe6d9;--ink:#1c2126;--ink-soft:#4a4f56;--ink-mute:#7a7670;--accent:#2d5566;--ochre:#a06b3a;--rule:#d8d2c3;--serif:"Fraunces",Georgia,serif;--sans:"IBM Plex Sans",system-ui,sans-serif;--mono:"JetBrains Mono",ui-monospace,monospace}
+*{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}
+body{font-family:var(--sans);background:var(--paper);color:var(--ink);font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:1;opacity:0.05;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='200' height='200' filter='url(%23n)'/></svg>")}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1180px;margin:0 auto;padding:0 32px;position:relative;z-index:2}
+
+.topbar{position:sticky;top:0;background:rgba(243,239,230,0.85);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);z-index:50;border-bottom:1px solid transparent;transition:border-color 0.3s}
+.topbar.scrolled{border-bottom-color:var(--rule)}
+.topbar-inner{display:flex;justify-content:space-between;align-items:baseline;padding:22px 0}
+.mark{font-family:var(--serif);font-weight:400;font-size:17px;letter-spacing:-0.01em;font-variation-settings:"opsz" 14}
+.mark em{font-style:italic;color:var(--accent);font-variation-settings:"opsz" 14,"WONK" 1}
+nav.menu{display:flex;gap:24px;font-family:var(--mono);font-size:12px;text-transform:lowercase;letter-spacing:0.04em;color:var(--ink-soft)}
+nav.menu a{transition:color 0.2s;position:relative}
+nav.menu a:hover{color:var(--accent)}
+nav.menu a.active{color:var(--ink)}
+nav.menu a.active::after{content:"";position:absolute;left:0;right:0;bottom:-6px;height:1px;background:var(--ochre)}
+
+.page-hero{padding:80px 0 60px;display:grid;grid-template-columns:1fr 360px;gap:60px;align-items:end;border-bottom:1px solid var(--rule)}
+.eyebrow{font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:0.2em;color:var(--ink-mute);margin-bottom:28px;display:flex;align-items:center;gap:14px}
+.eyebrow::before{content:"";width:28px;height:1px;background:var(--ochre)}
+h1.page-title{font-family:var(--serif);font-weight:350;font-size:clamp(44px,6vw,86px);line-height:0.98;letter-spacing:-0.025em;font-variation-settings:"opsz" 144,"SOFT" 30}
+h1.page-title em{font-style:italic;color:var(--accent);font-variation-settings:"opsz" 144,"SOFT" 60,"WONK" 1}
+.page-intro{font-family:var(--serif);font-weight:350;font-size:17px;line-height:1.5;color:var(--ink-soft);font-variation-settings:"opsz" 18;padding-bottom:8px}
+
+.section-label{font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:0.2em;color:var(--ink-mute);margin-bottom:50px;display:flex;align-items:baseline;justify-content:space-between;border-bottom:1px solid var(--rule);padding-bottom:14px}
+.section-label .num{color:var(--ochre)}
+.design-section{padding:80px 0}
+.design-section + .design-section{padding-top:40px}
+
+/* Practice statement */
+.practice{display:grid;grid-template-columns:1fr 320px;gap:80px;align-items:start;margin-bottom:30px}
+.practice .statement p{font-family:var(--serif);font-weight:350;font-size:20px;line-height:1.5;color:var(--ink);font-variation-settings:"opsz" 30;margin-bottom:1.2em;max-width:62ch;letter-spacing:-0.005em}
+.practice .statement p em{color:var(--accent);font-style:italic;font-variation-settings:"opsz" 30,"WONK" 1}
+.practice-aside{font-family:var(--mono);font-size:12px;color:var(--ink-soft);line-height:1.7}
+.practice-aside dt{color:var(--ink-mute);text-transform:uppercase;letter-spacing:0.1em;font-size:10px;margin-top:18px}
+.practice-aside dd{color:var(--ink);margin-bottom:4px}
+.practice-aside dl > div:first-child dt{margin-top:0}
+
+/* Design work cards (alternating layout) */
+.work{display:grid;grid-template-columns:1fr 1fr;gap:60px;padding:50px 0;align-items:center;border-bottom:1px solid var(--rule)}
+.work:nth-child(even) .work-visual{order:2}
+.work-meta{display:flex;gap:16px;font-family:var(--mono);font-size:11px;color:var(--ink-mute);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:14px}
+.work-meta .dot{color:var(--ochre)}
+.work h3{font-family:var(--serif);font-weight:400;font-size:clamp(26px,3vw,38px);line-height:1.1;letter-spacing:-0.02em;font-variation-settings:"opsz" 60,"SOFT" 30;margin-bottom:14px}
+.work h3 em{font-style:italic;color:var(--accent);font-variation-settings:"opsz" 60,"SOFT" 60,"WONK" 1}
+.work p{font-family:var(--serif);font-weight:350;font-size:16px;line-height:1.55;color:var(--ink-soft);font-variation-settings:"opsz" 18;margin-bottom:18px;max-width:52ch}
+.work .creds{font-family:var(--mono);font-size:11px;color:var(--ink-mute);line-height:1.7}
+.work .creds .label{display:inline-block;width:80px;text-transform:uppercase;letter-spacing:0.1em;color:var(--ink-mute);opacity:0.7}
+.work .creds .value{color:var(--ink-soft)}
+.work .links{margin-top:20px;display:flex;gap:22px;flex-wrap:wrap}
+.work .links a{font-family:var(--mono);font-size:12px;color:var(--accent);border-bottom:1px solid transparent;padding-bottom:2px;transition:border-color 0.2s}
+.work .links a:hover{border-bottom-color:var(--accent)}
+.work .links a::after{content:" ↗";opacity:0.6}
+
+.work-visual{width:100%;aspect-ratio:4/3;background:var(--paper-2);border:1px solid var(--rule);position:relative;overflow:hidden}
+.work-visual svg{position:absolute;inset:0;width:100%;height:100%;opacity:0.55}
+.work-visual.has-image{background:var(--ink)}
+.work-visual img{width:100%;height:100%;object-fit:cover;display:block}
+.work-visual .caption{position:absolute;bottom:10px;left:14px;font-family:var(--mono);font-size:9px;color:var(--ink-mute);text-transform:uppercase;letter-spacing:0.15em}
+.motif-stroke{fill:none;stroke:var(--accent);stroke-width:0.8}
+.motif-stroke-2{fill:none;stroke:var(--ochre);stroke-width:0.8}
+
+/* Drawings gallery (placeholder) */
+.gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.gallery-tile{aspect-ratio:1/1;background:var(--paper-2);border:1px solid var(--rule);position:relative;overflow:hidden;transition:transform 0.3s ease}
+.gallery-tile:hover{transform:translateY(-2px)}
+.gallery-tile svg{position:absolute;inset:0;width:100%;height:100%;opacity:0.5}
+.gallery-tile.has-image{background:var(--ink)}
+.gallery-tile img{width:100%;height:100%;object-fit:cover;display:block}
+.gallery-tile .label{position:absolute;bottom:12px;left:14px;font-family:var(--mono);font-size:10px;color:var(--ink-mute);text-transform:uppercase;letter-spacing:0.1em}
+.gallery-note{font-family:var(--mono);font-size:11px;color:var(--ink-mute);margin-top:24px;font-style:italic}
+
+.contact-strip{padding:90px 0 60px;border-top:1px solid var(--rule);margin-top:40px}
+.contact-strip h2{font-family:var(--serif);font-weight:350;font-size:clamp(28px,4vw,44px);letter-spacing:-0.02em;line-height:1.1;font-variation-settings:"opsz" 144,"SOFT" 50;margin-bottom:16px}
+.contact-strip h2 em{color:var(--accent);font-style:italic;font-variation-settings:"opsz" 144,"SOFT" 70,"WONK" 1}
+.contact-strip p{font-family:var(--serif);font-size:17px;color:var(--ink-soft);margin-bottom:24px;font-variation-settings:"opsz" 18}
+.contact-strip a.cta{display:inline-block;font-family:var(--serif);font-style:italic;font-size:22px;color:var(--accent);border-bottom:1px solid var(--accent);padding-bottom:2px;font-variation-settings:"opsz" 30,"WONK" 1}
+
+footer{padding:30px 0 50px;border-top:1px solid var(--rule);font-family:var(--mono);font-size:11px;color:var(--ink-mute);display:flex;justify-content:space-between}
+
+@media (max-width:920px){.page-hero{grid-template-columns:1fr;gap:30px;padding:60px 0 40px}.practice{grid-template-columns:1fr;gap:40px}.work{grid-template-columns:1fr;gap:30px}.work:nth-child(even) .work-visual{order:0}.gallery{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:560px){.wrap{padding:0 22px}.gallery{grid-template-columns:1fr}nav.menu{gap:14px;font-size:11px}nav.menu a:nth-child(n+4){display:none}}
+.reveal{opacity:0;transform:translateY(8px);animation:rise 0.9s cubic-bezier(0.16,1,0.3,1) forwards}.reveal.d1{animation-delay:0.06s}.reveal.d2{animation-delay:0.20s}@keyframes rise{to{opacity:1;transform:translateY(0)}}
+</style>
+</head>
+<body>
+
+<header class="topbar" id="topbar">
+  <div class="wrap topbar-inner">
+    <a href="index.html" class="mark">Supriya <em>Krishnan</em></a>
+    <nav class="menu">
+      <a href="index.html#about">about</a>
+      <a href="projects.html">projects</a>
+      <a href="events.html">events</a>
+      <a href="design.html" class="active">design</a>
+      <a href="publications.html">publications</a>
+      <a href="index.html#contact">contact</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <section class="page-hero">
+    <div>
+      <div class="eyebrow reveal">Architecture · Urban Design · Studio</div>
+      <h1 class="page-title reveal d1">Drawings &amp; <em>design.</em></h1>
+    </div>
+    <p class="page-intro reveal d2">Built work, urban-design proposals, and academic studio output — from a play-café-spa in Lower Parel to circular-city visions for Coimbatore and flood-resilient sections through Edogawa.</p>
+  </section>
+
+  <!-- ===== PRACTICE STATEMENT ===== -->
+  <section class="design-section">
+    <div class="section-label">
+      <span><span class="num">01 ·</span>&nbsp;&nbsp;Practice</span>
+      <span>Statement</span>
+    </div>
+    <div class="practice">
+      <div class="statement">
+        <p>I trained as an architect before becoming a planner, and the design instinct still runs through everything I do. I'm interested in how a wall, a section, or a neighbourhood diagram can hold a <em>position</em> — about climate, equity, or the long horizon of a place — that words alone can't quite reach.</p>
+        <p>The work below moves between scales: a single building in Mumbai, an expandable house typology for India's tier-2 cities, a circular district in Tamil Nadu, water-city sections through Tokyo's Edogawa ward, and design-research studios for the San Francisco Bay.</p>
+      </div>
+      <dl class="practice-aside">
+        <div><dt>Trained</dt><dd>B.Arch · M.Sc. Urban Planning</dd></div>
+        <div><dt>Studios</dt><dd>Umbrella Design</dd><dd>RC Architects</dd><dd>TU Delft Delta Interventions</dd></div>
+        <div><dt>Software</dt><dd>Rhino · Illustrator · QGIS</dd><dd>AutoCAD · SketchUp</dd></div>
+        <div><dt>Scales</dt><dd>Building · District · Region</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <!-- ===== SELECTED WORK ===== -->
+  <section class="design-section">
+    <div class="section-label">
+      <span><span class="num">02 ·</span>&nbsp;&nbsp;Selected Work</span>
+      <span>Five projects</span>
+    </div>
+
+    <!-- MILLK -->
+    <div class="work">
+      <div>
+        <div class="work-meta"><span>2017</span><span class="dot">·</span><span>Mumbai</span><span class="dot">·</span><span>Built</span></div>
+        <h3>MILLK <em>— Play, Café, Spa</em></h3>
+        <p>A controlled public space carved into a former mill in Lower Parel, holding a children's play area, a café, and an adult spa under one roof. The exterior — low-cost steel rods and lightweight plates — became a dancing facade; interior curves quietly separated activities of contrasting character without resorting to doors.</p>
+        <div class="creds">
+          <div><span class="label">Lead</span> <span class="value">Umbrella Design</span></div>
+          <div><span class="label">With</span> <span class="value">RC Architects</span></div>
+        </div>
+        <div class="links"><a href="https://rcarchitects.in/project/millk/">Project page</a></div>
+      </div>
+      <div class="work-visual">
+        <svg viewBox="0 0 240 180" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+          <g class="motif-stroke">
+            <line x1="20" y1="20" x2="20" y2="160"/>
+            <line x1="35" y1="30" x2="35" y2="150"/>
+            <line x1="50" y1="20" x2="50" y2="160"/>
+            <line x1="65" y1="40" x2="65" y2="140"/>
+            <line x1="80" y1="20" x2="80" y2="160"/>
+            <line x1="95" y1="35" x2="95" y2="145"/>
+            <line x1="110" y1="20" x2="110" y2="160"/>
+            <line x1="125" y1="30" x2="125" y2="150"/>
+            <line x1="140" y1="20" x2="140" y2="160"/>
+            <line x1="155" y1="40" x2="155" y2="140"/>
+            <line x1="170" y1="20" x2="170" y2="160"/>
+            <line x1="185" y1="30" x2="185" y2="150"/>
+            <line x1="200" y1="20" x2="200" y2="160"/>
+            <line x1="215" y1="35" x2="215" y2="145"/>
+          </g>
+          <line class="motif-stroke-2" x1="10" y1="90" x2="230" y2="90" stroke-dasharray="3 4" opacity="0.5"/>
+        </svg>
+        <span class="caption">Facade study</span>
+        <!-- To add image: replace the <svg> block above with <img src="images/millk.jpg" alt=""> and add class="has-image" to parent -->
+      </div>
+    </div>
+
+    <!-- India Homes 2020 -->
+    <div class="work">
+      <div>
+        <div class="work-meta"><span>2020</span><span class="dot">·</span><span>India</span><span class="dot">·</span><span>Top 10 Finalist</span></div>
+        <h3>Framed Habitat <em>— India Homes 2020</em></h3>
+        <p>India will need 25 million affordable homes by 2030, many in tier-2 and tier-3 cities transitioning from rural to urban. A literal architectural framework: a kit-of-parts that residents can build out and expand as their families grow, recombining for local climate. Shortlisted in the top ten nationally.</p>
+        <div class="creds">
+          <div><span class="label">Organizer</span> <span class="value">Tata Tiscon</span></div>
+          <div><span class="label">Team</span> <span class="value">RC Architects · Sindhuja Janakiraman · Anubhuti Chandana</span></div>
+        </div>
+      </div>
+      <div class="work-visual">
+        <svg viewBox="0 0 240 180" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+          <g class="motif-stroke">
+            <path d="M30,120 L30,80 L55,55 L80,80 L80,120 Z"/>
+            <path d="M90,120 L90,80 L115,55 L140,80 L140,120 Z"/>
+            <path d="M150,120 L150,80 L175,55 L200,80 L200,120 Z" opacity="0.6"/>
+            <line x1="20" y1="120" x2="220" y2="120"/>
+          </g>
+          <g class="motif-stroke-2" opacity="0.6">
+            <line x1="55" y1="135" x2="55" y2="145"/>
+            <line x1="115" y1="135" x2="115" y2="145"/>
+            <line x1="175" y1="135" x2="175" y2="145"/>
+            <line x1="20" y1="150" x2="220" y2="150" stroke-dasharray="2 3"/>
+          </g>
+        </svg>
+        <span class="caption">Modular framework</span>
+      </div>
+    </div>
+
+    <!-- Pudhu Covai -->
+    <div class="work">
+      <div>
+        <div class="work-meta"><span>2021</span><span class="dot">·</span><span>Coimbatore, IN</span><span class="dot">·</span><span>Top 5 Finalist</span></div>
+        <h3>PudhuCovai <em>— a circular district vision</em></h3>
+        <p>A 2050 vision for Coimbatore's transition to circularity, set in the Koundampalayam neighbourhood. Five spatial interventions — innovation hub, neighbourhood model, green heart, canal revitalisation, circular high-rise integration — co-produced through a proposed welfare association and the <em>Oṉdṟāga</em> neighbourhood-improvement app.</p>
+        <div class="creds">
+          <div><span class="label">Organizer</span> <span class="value">Coimbatore City Municipal Corporation × GIZ India</span></div>
+          <div><span class="label">Team</span> <span class="value">Sindhuja Janakiraman · Tahaer Zoyab · Sumanth Rao · Maanasaa Shivashankar · Kavya Kalyan · Anubhuti Chandana</span></div>
+        </div>
+        <div class="links"><a href="https://www.covaidesign-competition.org/winning-entries/">Competition entry</a></div>
+      </div>
+      <div class="work-visual">
+        <svg viewBox="0 0 240 180" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+          <g class="motif-stroke">
+            <circle cx="120" cy="90" r="60"/>
+            <circle cx="120" cy="90" r="42" opacity="0.6"/>
+            <circle cx="120" cy="90" r="24" opacity="0.4"/>
+          </g>
+          <g class="motif-stroke-2" opacity="0.7">
+            <path d="M120,30 L120,20 M180,90 L190,90 M120,150 L120,160 M60,90 L50,90"/>
+            <path d="M85,55 Q120,42 155,55"/>
+            <path d="M85,125 Q120,138 155,125"/>
+          </g>
+        </svg>
+        <span class="caption">District diagram</span>
+      </div>
+    </div>
+
+    <!-- Edogawa Tokyo -->
+    <div class="work">
+      <div>
+        <div class="work-meta"><span>2019</span><span class="dot">·</span><span>Tokyo</span><span class="dot">·</span><span>Studio</span></div>
+        <h3>Edogawa <em>— Water City &amp; Parkway sections</em></h3>
+        <p>Two design alternatives for one of Tokyo's most flood-prone wards, combining hydraulic engineering with spatial planning. <em>Edogawa Water City</em> embraces water as figure; <em>Parkway Edogawa</em> threads green infrastructure through the dense fabric. Each section was tested for urban-design quality and flood-risk reduction — a sustainable bargain between hard and soft measures.</p>
+        <div class="creds">
+          <div><span class="label">Studio</span> <span class="value">TU Delft × University of Tokyo</span></div>
+        </div>
+        <div class="links">
+          <a href="https://www.mdpi.com/2076-3263/9/8/357">Published paper</a>
+          <a href="http://www.gallery-ten.tokyo/archives/category/22-challenges-in-flooding">Tokyo exhibition</a>
+        </div>
+      </div>
+      <div class="work-visual">
+        <svg viewBox="0 0 240 180" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+          <g class="motif-stroke">
+            <path d="M0,70 Q30,60 60,70 T120,70 T180,70 T240,70"/>
+            <path d="M0,90 Q30,80 60,90 T120,90 T180,90 T240,90" opacity="0.7"/>
+            <path d="M0,110 Q30,100 60,110 T120,110 T180,110 T240,110" opacity="0.5"/>
+          </g>
+          <g class="motif-stroke-2">
+            <rect x="50" y="115" width="20" height="35"/>
+            <rect x="80" y="120" width="22" height="30" opacity="0.7"/>
+            <rect x="115" y="115" width="18" height="35"/>
+            <rect x="145" y="125" width="25" height="25" opacity="0.6"/>
+            <rect x="180" y="115" width="20" height="35"/>
+          </g>
+        </svg>
+        <span class="caption">Section study</span>
+      </div>
+    </div>
+
+    <!-- Adaptation by Design -->
+    <div class="work">
+      <div>
+        <div class="work-meta"><span>2017</span><span class="dot">·</span><span>San Francisco Bay</span><span class="dot">·</span><span>Studio</span></div>
+        <h3>Delta Interventions <em>— Adaptation by Design</em></h3>
+        <p>Studio output from the TU Delft Delta Urbanism Research Programme, exhibited in San Francisco. Research themes spanning systems thinking, landscape dynamics, urban morphology, building-with-nature infrastructures, and adaptation pathways — pre-figuring the BCDC's <em>Resilience by Design</em> competition.</p>
+        <div class="creds">
+          <div><span class="label">Leaders</span> <span class="value">Han Meyer · Taneha Bacchin</span></div>
+          <div><span class="label">With</span> <span class="value">UC Berkeley CED</span></div>
+        </div>
+        <div class="links">
+          <a href="https://deltaurbanismtudelft.org/2017/06/21/adaptation-by-design-exhibition-and-seminar-delta-interventions-studio-2016-2017/">Programme website</a>
+          <a href="events.html#adaptation-by-design">More on the exhibit</a>
+        </div>
+      </div>
+      <div class="work-visual">
+        <svg viewBox="0 0 240 180" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+          <g class="motif-stroke">
+            <path d="M120,20 Q115,55 95,90 Q80,120 55,150"/>
+            <path d="M120,20 Q125,55 145,90 Q160,120 185,150"/>
+            <path d="M120,20 Q120,60 120,90 Q120,120 120,150"/>
+            <path d="M95,90 Q70,100 45,110"/>
+            <path d="M145,90 Q170,100 195,110"/>
+          </g>
+          <g class="motif-stroke-2" opacity="0.5">
+            <path d="M0,165 Q60,160 120,163 T240,160" stroke-dasharray="2 4"/>
+          </g>
+        </svg>
+        <span class="caption">Delta system diagram</span>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ===== DRAWINGS GALLERY ===== -->
+  <section class="design-section">
+    <div class="section-label">
+      <span><span class="num">03 ·</span>&nbsp;&nbsp;Drawings &amp; Sketches</span>
+      <span>Gallery</span>
+    </div>
+    <div class="gallery">
+      <!-- Six placeholder tiles. Replace each .gallery-tile's SVG with <img src="images/drawing-N.jpg" alt=""> and add class="has-image" -->
+      <div class="gallery-tile">
+        <svg viewBox="0 0 100 100" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+          <g class="motif-stroke">
+            <rect x="20" y="30" width="60" height="40"/>
+            <line x1="20" y1="50" x2="80" y2="50"/>
+            <line x1="50" y1="30" x2="50" y2="70"/>
+          </g>
+        </svg>
+        <span class="label">Plan study</span>
+      </div>
+      <div class="gallery-tile">
+        <svg viewBox="0 0 100 100" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+          <g class="motif-stroke">
+            <path d="M15,80 L50,30 L85,80 Z"/>
+            <line x1="15" y1="80" x2="85" y2="80" stroke-dasharray="2 3"/>
+          </g>
+        </svg>
+        <span class="label">Section</span>
+      </div>
+      <div class="gallery-tile">
+        <svg viewBox="0 0 100 100" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+          <g class="motif-stroke">
+            <circle cx="50" cy="50" r="30"/>
+            <line x1="20" y1="50" x2="80" y2="50"/>
+            <line x1="50" y1="20" x2="50" y2="80"/>
+          </g>
+        </svg>
+        <span class="label">Diagram</span>
+      </div>
+      <div class="gallery-tile">
+        <svg viewBox="0 0 100 100" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+          <g class="motif-stroke">
+            <line x1="15" y1="85" x2="50" y2="35"/>
+            <line x1="85" y1="85" x2="50" y2="35"/>
+            <rect x="35" y="55" width="30" height="30"/>
+          </g>
+        </svg>
+        <span class="label">Axonometric</span>
+      </div>
+      <div class="gallery-tile">
+        <svg viewBox="0 0 100 100" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+          <g class="motif-stroke">
+            <path d="M15,50 Q35,30 50,50 T85,50"/>
+            <path d="M15,65 Q35,45 50,65 T85,65" opacity="0.7"/>
+          </g>
+        </svg>
+        <span class="label">Topography</span>
+      </div>
+      <div class="gallery-tile">
+        <svg viewBox="0 0 100 100" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+          <g class="motif-stroke">
+            <line x1="20" y1="30" x2="80" y2="30"/>
+            <line x1="20" y1="40" x2="80" y2="40" opacity="0.7"/>
+            <line x1="20" y1="50" x2="60" y2="50" opacity="0.6"/>
+            <line x1="20" y1="60" x2="80" y2="60" opacity="0.5"/>
+            <line x1="20" y1="70" x2="50" y2="70" opacity="0.4"/>
+          </g>
+        </svg>
+        <span class="label">Sketch</span>
+      </div>
+    </div>
+    <p class="gallery-note">// Image slots ready — drop in JPG/PNG files (each tile is a 1:1 square).</p>
+  </section>
+
+</main>
+
+<section class="contact-strip wrap">
+  <h2>Want to <em>commission</em> design?</h2>
+  <p>Available for architecture, urban-design, and design-research collaborations — particularly at the intersection of climate adaptation and the built environment.</p>
+  <a href="mailto:supriya.urban@gmail.com" class="cta">supriya.urban@gmail.com</a>
+</section>
+
+<footer class="wrap">
+  <span>© 2026 Supriya Krishnan</span>
+  <span><a href="index.html">← back to home</a></span>
+</footer>
+
+<script>
+  const top=document.getElementById('topbar');
+  const onScroll=()=>top.classList.toggle('scrolled',window.scrollY>12);
+  window.addEventListener('scroll',onScroll,{passive:true});onScroll();
+</script>
+
+</body>
+</html>

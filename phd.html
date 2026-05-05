@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Future Ground — Supriya Krishnan</title>
+<meta name="description" content="The Future Ground: Urban Planning Under Climate Uncertainty — doctoral research at TU Delft by Supriya Krishnan.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,300..900,0..100,0..1;1,9..144,300..900,0..100,0..1&family=IBM+Plex+Sans:wght@300;400;500&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --paper:#f3efe6; --paper-2:#ebe6d9;
+  --ink:#1c2126; --ink-soft:#4a4f56; --ink-mute:#7a7670;
+  --accent:#2d5566; --ochre:#a06b3a; --rule:#d8d2c3;
+  --serif:"Fraunces",Georgia,serif;
+  --sans:"IBM Plex Sans",system-ui,sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);background:var(--paper);color:var(--ink);font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:1;opacity:0.05;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='200' height='200' filter='url(%23n)'/></svg>")}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1180px;margin:0 auto;padding:0 32px;position:relative;z-index:2}
+
+/* Topbar */
+.topbar{position:sticky;top:0;background:rgba(243,239,230,0.85);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);z-index:50;border-bottom:1px solid transparent;transition:border-color 0.3s}
+.topbar.scrolled{border-bottom-color:var(--rule)}
+.topbar-inner{display:flex;justify-content:space-between;align-items:baseline;padding:22px 0}
+.mark{font-family:var(--serif);font-weight:400;font-size:17px;letter-spacing:-0.01em;font-variation-settings:"opsz" 14}
+.mark em{font-style:italic;color:var(--accent);font-variation-settings:"opsz" 14,"WONK" 1}
+nav.menu{display:flex;gap:24px;font-family:var(--mono);font-size:12px;text-transform:lowercase;letter-spacing:0.04em;color:var(--ink-soft)}
+nav.menu a{transition:color 0.2s;position:relative}
+nav.menu a:hover{color:var(--accent)}
+
+/* Breadcrumb */
+.crumb{padding:30px 0 0;font-family:var(--mono);font-size:11px;color:var(--ink-mute);text-transform:uppercase;letter-spacing:0.15em}
+.crumb a{border-bottom:1px solid transparent;transition:border-color 0.2s}
+.crumb a:hover{border-bottom-color:var(--accent);color:var(--accent)}
+.crumb .sep{margin:0 12px;color:var(--rule)}
+.crumb .here{color:var(--ink)}
+
+/* Page hero */
+.page-hero{padding:50px 0 70px;border-bottom:1px solid var(--rule)}
+.eyebrow{font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:0.2em;color:var(--ink-mute);margin-bottom:30px;display:flex;align-items:center;gap:14px}
+.eyebrow::before{content:"";width:28px;height:1px;background:var(--ochre)}
+h1.thesis-title{font-family:var(--serif);font-weight:300;font-size:clamp(48px,7vw,108px);line-height:0.96;letter-spacing:-0.03em;font-variation-settings:"opsz" 144,"SOFT" 30;margin-bottom:16px}
+h1.thesis-title em{font-style:italic;color:var(--accent);font-variation-settings:"opsz" 144,"SOFT" 60,"WONK" 1}
+.thesis-sub{font-family:var(--serif);font-size:clamp(20px,2.4vw,28px);font-style:italic;color:var(--ink-soft);font-variation-settings:"opsz" 30,"WONK" 1;font-weight:350;letter-spacing:-0.005em;max-width:30ch}
+
+/* Status bar */
+.status-bar{margin-top:50px;display:grid;grid-template-columns:repeat(4,1fr);gap:32px;padding:24px 28px;background:var(--paper-2);border:1px solid var(--rule);border-radius:2px}
+.status-cell{display:flex;flex-direction:column;gap:6px}
+.status-cell dt{font-family:var(--mono);font-size:10px;text-transform:uppercase;letter-spacing:0.15em;color:var(--ink-mute)}
+.status-cell dd{font-family:var(--serif);font-size:16px;color:var(--ink);font-variation-settings:"opsz" 18}
+.status-cell.featured dd{color:var(--accent);font-style:italic;font-variation-settings:"opsz" 18,"WONK" 1}
+.status-dot{display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--ochre);margin-right:8px;vertical-align:middle;animation:pulse 2.4s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:0.4;transform:scale(1)}50%{opacity:1;transform:scale(1.3)}}
+
+/* Sections */
+section.block{padding:90px 0;border-bottom:1px solid var(--rule)}
+.section-label{font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:0.2em;color:var(--ink-mute);margin-bottom:48px;display:flex;align-items:baseline;justify-content:space-between;border-bottom:1px solid var(--rule);padding-bottom:14px}
+.section-label .num{color:var(--ochre)}
+
+/* Abstract / lead */
+.abstract-grid{display:grid;grid-template-columns:1fr 320px;gap:80px;align-items:start}
+.abstract p{font-family:var(--serif);font-weight:350;font-size:20px;line-height:1.5;color:var(--ink);font-variation-settings:"opsz" 30;margin-bottom:1.2em;max-width:62ch;letter-spacing:-0.005em}
+.abstract p em{color:var(--accent);font-style:italic;font-variation-settings:"opsz" 30,"WONK" 1}
+.abstract .pullquote{font-family:var(--serif);font-style:italic;font-size:24px;color:var(--accent);line-height:1.35;font-variation-settings:"opsz" 36,"WONK" 1;padding:24px 0 24px 28px;border-left:2px solid var(--ochre);margin:32px 0}
+.aside{font-family:var(--mono);font-size:12px;color:var(--ink-soft);line-height:1.7}
+.aside dt{color:var(--ink-mute);text-transform:uppercase;letter-spacing:0.1em;font-size:10px;margin-top:18px}
+.aside dd{color:var(--ink);margin-bottom:4px}
+.aside dl > div:first-child dt{margin-top:0}
+
+/* Pillars */
+.pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:1px solid var(--rule)}
+.pillar{padding:40px 28px 40px 0;border-right:1px solid var(--rule)}
+.pillar:last-child{border-right:none;padding-right:0}
+.pillar:not(:first-child){padding-left:28px}
+.pillar-num{font-family:var(--mono);font-size:11px;color:var(--ochre);margin-bottom:16px;letter-spacing:0.1em}
+.pillar h3{font-family:var(--serif);font-weight:400;font-size:26px;letter-spacing:-0.015em;margin-bottom:14px;font-variation-settings:"opsz" 36}
+.pillar p{font-size:14px;line-height:1.6;color:var(--ink-soft)}
+
+/* Featured / award */
+.featured{display:grid;grid-template-columns:1fr 1fr;gap:32px}
+.feat-card{padding:40px;background:var(--paper-2);border:1px solid var(--rule);position:relative;overflow:hidden;transition:transform 0.3s ease}
+.feat-card::before{content:"";position:absolute;top:0;left:0;width:100%;height:3px;background:linear-gradient(90deg,var(--accent),var(--ochre))}
+.feat-card:hover{transform:translateY(-2px)}
+.feat-tag{font-family:var(--mono);font-size:10px;text-transform:uppercase;letter-spacing:0.15em;color:var(--ochre);margin-bottom:14px}
+.feat-card h4{font-family:var(--serif);font-size:24px;font-weight:400;line-height:1.2;letter-spacing:-0.01em;font-variation-settings:"opsz" 30;margin-bottom:14px}
+.feat-card p{font-size:14px;line-height:1.55;color:var(--ink-soft);margin-bottom:18px}
+.feat-link{font-family:var(--mono);font-size:12px;color:var(--accent);border-bottom:1px solid var(--accent);padding-bottom:2px}
+.feat-link::after{content:" ↗";opacity:0.6}
+
+/* Pub list & Talk list */
+.pub-list,.talk-list{border-top:1px solid var(--rule)}
+.pub,.talk{display:grid;gap:24px;padding:20px 0;border-bottom:1px solid var(--rule);align-items:baseline;transition:padding 0.3s,background 0.3s}
+.pub{grid-template-columns:60px 1fr 110px}
+.talk{grid-template-columns:60px 1fr}
+.pub:hover,.talk:hover{padding-left:12px;background:linear-gradient(90deg,var(--paper-2),transparent 60%)}
+.pub-year,.talk-year{font-family:var(--mono);font-size:12px;color:var(--ink-mute)}
+.pub-cite{font-family:var(--serif);font-size:15px;font-variation-settings:"opsz" 18;line-height:1.5;color:var(--ink-soft)}
+.pub-cite strong{color:var(--ink);font-weight:500}
+.pub-cite em{color:var(--accent);font-style:italic}
+.pub-cite a{border-bottom:1px solid var(--rule)}
+.pub-cite a:hover{border-bottom-color:var(--accent);color:var(--accent)}
+.pub-venue{font-family:var(--mono);font-size:11px;color:var(--ink-mute);text-transform:uppercase;letter-spacing:0.1em;text-align:right}
+.talk-title{font-family:var(--serif);font-size:15px;font-variation-settings:"opsz" 18;line-height:1.45;color:var(--ink)}
+.talk-title em{color:var(--ink-soft);font-style:italic;font-size:0.92em}
+.talk-title a{border-bottom:1px solid var(--rule);transition:border-color 0.2s,color 0.2s}
+.talk-title a:hover{border-bottom-color:var(--accent);color:var(--accent)}
+
+/* Team */
+.team-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:60px;align-items:start}
+.team-block h4{font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:0.15em;color:var(--ink-mute);margin-bottom:18px}
+.team-block ul{list-style:none}
+.team-block li{font-family:var(--serif);font-size:17px;font-variation-settings:"opsz" 18;line-height:1.7;color:var(--ink)}
+.team-block li .role{display:block;font-family:var(--mono);font-size:11px;color:var(--ink-mute);margin-top:-2px}
+.team-block p{font-family:var(--serif);font-size:15px;line-height:1.6;color:var(--ink-soft);font-variation-settings:"opsz" 18}
+
+/* Contact strip */
+.contact-strip{padding:90px 0 60px}
+.contact-strip h2{font-family:var(--serif);font-weight:350;font-size:clamp(28px,4vw,44px);letter-spacing:-0.02em;line-height:1.1;font-variation-settings:"opsz" 144,"SOFT" 50;margin-bottom:16px}
+.contact-strip h2 em{color:var(--accent);font-style:italic;font-variation-settings:"opsz" 144,"SOFT" 70,"WONK" 1}
+.contact-strip p{font-family:var(--serif);font-size:17px;color:var(--ink-soft);margin-bottom:24px;font-variation-settings:"opsz" 18}
+.contact-strip a.cta{display:inline-block;font-family:var(--serif);font-style:italic;font-size:22px;color:var(--accent);border-bottom:1px solid var(--accent);padding-bottom:2px;font-variation-settings:"opsz" 30,"WONK" 1}
+
+footer{padding:30px 0 50px;border-top:1px solid var(--rule);font-family:var(--mono);font-size:11px;color:var(--ink-mute);display:flex;justify-content:space-between}
+
+/* Responsive */
+@media (max-width:920px){
+  .status-bar{grid-template-columns:repeat(2,1fr);gap:20px}
+  .abstract-grid{grid-template-columns:1fr;gap:40px}
+  .pillars{grid-template-columns:1fr}
+  .pillar{border-right:none;border-bottom:1px solid var(--rule);padding:28px 0!important}
+  .pillar:last-child{border-bottom:none}
+  .featured{grid-template-columns:1fr}
+  .team-grid{grid-template-columns:1fr;gap:40px}
+  nav.menu{gap:14px;font-size:11px}
+}
+@media (max-width:560px){
+  .wrap{padding:0 22px}
+  section.block{padding:60px 0}
+  .pub{grid-template-columns:50px 1fr}
+  .pub-venue{display:none}
+  nav.menu a:nth-child(n+4){display:none}
+}
+
+.reveal{opacity:0;transform:translateY(8px);animation:rise 0.9s cubic-bezier(0.16,1,0.3,1) forwards}
+.reveal.d1{animation-delay:0.06s}.reveal.d2{animation-delay:0.20s}.reveal.d3{animation-delay:0.36s}
+@keyframes rise{to{opacity:1;transform:translateY(0)}}
+</style>
+</head>
+<body>
+
+<header class="topbar" id="topbar">
+  <div class="wrap topbar-inner">
+    <a href="index.html" class="mark">Supriya <em>Krishnan</em></a>
+    <nav class="menu">
+      <a href="index.html#about">about</a>
+      <a href="projects.html">projects</a>
+      <a href="events.html">events</a>
+      <a href="design.html">design</a>
+      <a href="publications.html">publications</a>
+      <a href="index.html#contact">contact</a>
+    </nav>
+  </div>
+</header>
+
+<div class="wrap crumb">
+  <a href="index.html">home</a> <span class="sep">/</span> <a href="projects.html">projects</a> <span class="sep">/</span> <span class="here">the future ground</span>
+</div>
+
+<main class="wrap">
+
+  <!-- ===== HERO ===== -->
+  <section class="page-hero">
+    <div class="eyebrow reveal">PhD · TU Delft · 2019—2026</div>
+    <h1 class="thesis-title reveal d1">The Future <em>Ground</em></h1>
+    <p class="thesis-sub reveal d2">Urban Planning Under Climate Uncertainty</p>
+
+    <dl class="status-bar reveal d3">
+      <div class="status-cell">
+        <dt>Status</dt>
+        <dd><span class="status-dot"></span>Defended · 25 March 2026</dd>
+      </div>
+      <div class="status-cell">
+        <dt>Institution</dt>
+        <dd>TU Delft Resilience Lab</dd>
+      </div>
+      <div class="status-cell">
+        <dt>Geography</dt>
+        <dd>India · Netherlands</dd>
+      </div>
+      <div class="status-cell featured">
+        <dt>Recognition</dt>
+        <dd>Allianz Climate Risk Award, 2024</dd>
+      </div>
+    </dl>
+  </section>
+
+  <!-- ===== ABSTRACT ===== -->
+  <section class="block">
+    <div class="section-label">
+      <span><span class="num">01 ·</span>&nbsp;&nbsp;The Argument</span>
+      <span>Abstract</span>
+    </div>
+    <div class="abstract-grid">
+      <div class="abstract">
+        <p>Traditional urban planning is hamstrung by its own rigidity. This research bridges the gap between static land-use models and the volatile reality of climate disruption — moving toward <em>adaptive, systems-based planning.</em></p>
+        <div class="pullquote">By reconciling immediate infrastructure needs with long-term resilience, I developed a new framework for Resilient Urban Planning.</div>
+        <p>The framework uses a hybrid scenario-building method, tested empirically across India and the Netherlands, that ensures urban resilience is an equitable, context-specific reality — not a fixed scenario imposed from above.</p>
+      </div>
+      <dl class="aside">
+        <div><dt>Promotor</dt><dd>Prof. Tina Comes</dd></div>
+        <div><dt>Co-promotor</dt><dd>Dr. Nazli Yonca Aydin</dd></div>
+        <div><dt>Faculty</dt><dd>Technology, Policy &amp; Management</dd></div>
+        <div><dt>Funding</dt><dd>TU Delft Global Fellowship</dd></div>
+        <div><dt>Recognition</dt><dd>C40 Women4Climate, 2020</dd><dd>Allianz Climate Risk, 2024</dd></div>
+        <div><dt>Empirical sites</dt><dd>Mumbai Metropolitan Region</dd><dd>Metropolitan Region Amsterdam</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <!-- ===== PILLARS ===== -->
+  <section class="block">
+    <div class="section-label">
+      <span><span class="num">02 ·</span>&nbsp;&nbsp;Three Threads</span>
+      <span>Methodological pillars</span>
+    </div>
+    <div class="pillars">
+      <div class="pillar">
+        <div class="pillar-num">i.</div>
+        <h3>Frameworks</h3>
+        <p>Models for embedding resilience within the spatio-temporal dynamics of metropolitan regions — RISE-UP, TIMEWISE, and the integrated land-use change framework.</p>
+      </div>
+      <div class="pillar">
+        <div class="pillar-num">ii.</div>
+        <h3>Hybrid Scenarios</h3>
+        <p>Blending computational land-use models with narrative foresight to explore multiple urbanisation strategies, rather than collapsing the future into one fixed projection.</p>
+      </div>
+      <div class="pillar">
+        <div class="pillar-num">iii.</div>
+        <h3>Interdisciplinary</h3>
+        <p>An empirical methodology that combines spatial modelling with qualitative insights from local practitioners and residents — closing the gap between policy and place.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FEATURED ===== -->
+  <section class="block">
+    <div class="section-label">
+      <span><span class="num">03 ·</span>&nbsp;&nbsp;Recognition</span>
+      <span>Featured</span>
+    </div>
+    <div class="featured">
+      <div class="feat-card">
+        <div class="feat-tag">2024 · Award</div>
+        <h4>Allianz Climate Risk Award</h4>
+        <p>For research advancing climate-risk reasoning in urban planning practice. Recognised among an international cohort of climate-risk scholars.</p>
+        <a href="https://www.allianz.com/en/mediacenter/news/media-releases/241202-allianz-climate-risk-award-2024.html" class="feat-link">Allianz announcement</a>
+      </div>
+      <div class="feat-card">
+        <div class="feat-tag">Press</div>
+        <h4>TU Delft — Stories of Science</h4>
+        <p>Featured in TU Delft's research stories series: <em>"The Future Ground: Planning Cities for an Uncertain Future."</em></p>
+        <a href="https://www.linkedin.com/feed/update/urn:li:share:7001462001809924096" class="feat-link">Read the story</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PUBLICATIONS ===== -->
+  <section class="block">
+    <div class="section-label">
+      <span><span class="num">04 ·</span>&nbsp;&nbsp;Publications</span>
+      <span>From the thesis</span>
+    </div>
+    <div class="pub-list">
+      <div class="pub">
+        <span class="pub-year">2024</span>
+        <div class="pub-cite"><strong>FutureScapes:</strong> <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4106195">Blending computational models and scenario narratives to design urban futures</a> <em>— Environment and Planning B: Urban Analytics and City Science</em>. Krishnan, S., van Delden, H., Aydin, N.Y. and Comes, T.</div>
+        <span class="pub-venue">EPB</span>
+      </div>
+      <div class="pub">
+        <span class="pub-year">2024</span>
+        <div class="pub-cite"><strong>TIMEWISE:</strong> <a href="https://www.nature.com/articles/s42949-024-00140-5">Temporal dynamics for urban resilience — theoretical insights and empirical reflections from Amsterdam and Mumbai</a> <em>— npj Urban Sustainability, 4(1), p.4</em>. Krishnan, S., Aydin, N.Y. and Comes, T.</div>
+        <span class="pub-venue">npj</span>
+      </div>
+      <div class="pub">
+        <span class="pub-year">2023</span>
+        <div class="pub-cite"><strong>RISE-UP:</strong> <a href="https://www.sciencedirect.com/science/article/pii/S0264275123002767">Resilience in urban planning for climate uncertainty — empirical insights and theoretical reflections from case studies in Amsterdam and Mumbai</a> <em>— Cities, 141, p.104464</em>. Krishnan, S., Aydin, N.Y. and Comes, T.</div>
+        <span class="pub-venue">Cities</span>
+      </div>
+      <div class="pub">
+        <span class="pub-year">2022</span>
+        <div class="pub-cite"><a href="https://rpsonline.com.sg/proceedings/esrel2022/html/557.xml">An integrated framework for incorporating climate risk into urban land-use change modeling</a> <em>— Proceedings of the 32nd European Safety and Reliability Conference</em>. Aydin, N.Y., Krishnan, S., Yu, H. and Comes, M.</div>
+        <span class="pub-venue">ESREL</span>
+      </div>
+      <div class="pub">
+        <span class="pub-year">2021</span>
+        <div class="pub-cite"><a href="https://link.springer.com/chapter/10.1007/978-3-030-76059-5_24">Planning Support Systems for Long-Term Climate Resilience: A Critical Review</a> <em>— Urban Informatics and Future Cities, p.465</em>. Krishnan, S., Aydin, N.Y. and Comes, T.</div>
+        <span class="pub-venue">Springer</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== TALKS ===== -->
+  <section class="block">
+    <div class="section-label">
+      <span><span class="num">05 ·</span>&nbsp;&nbsp;Talks &amp; Workshops</span>
+      <span>13 selected</span>
+    </div>
+    <div class="talk-list">
+      <div class="talk"><span class="talk-year">2024</span><div class="talk-title"><em>Riding Out the Storm.</em> <strong>Allianz Climate Risk Award, 2024.</strong></div></div>
+      <div class="talk"><span class="talk-year">2024</span><div class="talk-title"><em>Data-rich vs. Data-poor? Developing regional land-use models for urban resilience: insights from the Mumbai Metropolitan Region.</em> <strong>Harvard University — International Workshop on Climate-Resilient Development in Southeast Asia.</strong></div></div>
+      <div class="talk"><span class="talk-year">2024</span><div class="talk-title"><em>Who Plans? Knowledge paradigms in urban planning and policy processes.</em> <strong>5th India Public Policy Network Conference, IIT Bombay.</strong></div></div>
+      <div class="talk"><span class="talk-year">2024</span><div class="talk-title"><em>RISE-UP: Resilience in urban planning for climate uncertainty.</em> <strong>Reinventing the City, Amsterdam.</strong></div></div>
+      <div class="talk"><span class="talk-year">2023</span><div class="talk-title"><em>Risk to Resilience: Dealing with uncertainty in urban planning.</em> <strong>Global Coastal Cities Summit, Mumbai</strong> (speaker &amp; session moderator).</div></div>
+      <div class="talk"><span class="talk-year">2023</span><div class="talk-title"><em>Predicting land-use for urban resilience: the knowledge divide between the Global North and Global South.</em> <strong>International Conference on Resilient Systems, Mexico.</strong> <a href="https://surfdrive.surf.nl/files/index.php/s/1wSEZas7IPcATj5">Slides</a></div></div>
+      <div class="talk"><span class="talk-year">2022</span><div class="talk-title"><em>WHEN TO PLAN? Understanding temporality for urban planning under uncertainty.</em> <strong>Deep Uncertainty (DMDU), Mexico.</strong></div></div>
+      <div class="talk"><span class="talk-year">2022</span><div class="talk-title"><em>Exploring resilient and equitable urban scenarios.</em> <strong>TU Delft Summer School: Planning &amp; Designing the Just City.</strong></div></div>
+      <div class="talk"><span class="talk-year">2022</span><div class="talk-title"><em>Geospatial tools for urban resilience.</em> <strong>Geospatial World Forum, Netherlands.</strong></div></div>
+      <div class="talk"><span class="talk-year">2021</span><div class="talk-title"><em>Planning for a Resilient Mumbai.</em> <strong>Netherlands Consulate Mumbai &amp; Municipal Corporation of Greater Mumbai.</strong></div></div>
+      <div class="talk"><span class="talk-year">2021</span><div class="talk-title"><em>Planning Support Systems for Long-Term Climate Resilience.</em> <strong>CUPUM, Finland.</strong></div></div>
+      <div class="talk"><span class="talk-year">2020</span><div class="talk-title"><em>Towards a framework for long-term climate resilience.</em> <strong>Joint Resilience Engineering Conference, Delft.</strong></div></div>
+      <div class="talk"><span class="talk-year">2019</span><div class="talk-title"><em>The uncertainty space in urban planning.</em> <strong>DMDU, Delft.</strong></div></div>
+    </div>
+  </section>
+
+  <!-- ===== CONSULTATIONS ===== -->
+  <section class="block">
+    <div class="section-label">
+      <span><span class="num">06 ·</span>&nbsp;&nbsp;Expert Consultations</span>
+      <span>Practice engagement</span>
+    </div>
+    <div class="featured">
+      <div class="feat-card">
+        <div class="feat-tag">2021 · Workshop</div>
+        <h4>RE-GROUND</h4>
+        <p>A strategic consultation with urban practitioners and policy experts to align computational findings from the thesis with local spatial planning needs in the Metropolitan Region of Amsterdam.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== TEAM ===== -->
+  <section class="block">
+    <div class="section-label">
+      <span><span class="num">07 ·</span>&nbsp;&nbsp;Core Team</span>
+      <span>With gratitude</span>
+    </div>
+    <div class="team-grid">
+      <div class="team-block">
+        <h4>Supervision</h4>
+        <ul>
+          <li>Prof. Tina Comes <span class="role">Promotor</span></li>
+          <li>Dr. Nazli Yonca Aydin <span class="role">Co-promotor</span></li>
+          <li>Dr. Hedwig van Delden <span class="role">Methodological supervision</span></li>
+        </ul>
+      </div>
+      <div class="team-block">
+        <h4>Researchers</h4>
+        <p>Aarthi Sundaram, Hongxuan Yu, Marya El Malki, and others on the multidisciplinary student researcher team.</p>
+        <h4 style="margin-top:32px">Supported by</h4>
+        <p>TU Delft Resilience Lab · TU Delft Global · Faculty of Technology, Policy &amp; Management.</p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- Contact strip -->
+<section class="contact-strip wrap">
+  <h2>Building on this <em>work?</em></h2>
+  <p>Open to research partnerships, consulting engagements, and full-time roles in climate policy, urban resilience, and sustainability strategy.</p>
+  <a href="mailto:supriya.urban@gmail.com" class="cta">supriya.urban@gmail.com</a>
+</section>
+
+<footer class="wrap">
+  <span>© 2026 Supriya Krishnan</span>
+  <span><a href="projects.html">← back to projects</a></span>
+</footer>
+
+<script>
+  const top=document.getElementById('topbar');
+  const onScroll=()=>top.classList.toggle('scrolled',window.scrollY>12);
+  window.addEventListener('scroll',onScroll,{passive:true});onScroll();
+</script>
+
+</body>
+</html>

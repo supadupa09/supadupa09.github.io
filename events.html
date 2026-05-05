@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Events &amp; Exhibits — Supriya Krishnan</title>
+<meta name="description" content="Selected events, exhibitions, and convenings — Supriya Krishnan.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,300..900,0..100,0..1;1,9..144,300..900,0..100,0..1&family=IBM+Plex+Sans:wght@300;400;500&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+
+<style>
+:root{--paper:#f3efe6;--paper-2:#ebe6d9;--ink:#1c2126;--ink-soft:#4a4f56;--ink-mute:#7a7670;--accent:#2d5566;--ochre:#a06b3a;--rule:#d8d2c3;--serif:"Fraunces",Georgia,serif;--sans:"IBM Plex Sans",system-ui,sans-serif;--mono:"JetBrains Mono",ui-monospace,monospace}
+*{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}
+body{font-family:var(--sans);background:var(--paper);color:var(--ink);font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:1;opacity:0.05;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='200' height='200' filter='url(%23n)'/></svg>")}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1180px;margin:0 auto;padding:0 32px;position:relative;z-index:2}
+
+.topbar{position:sticky;top:0;background:rgba(243,239,230,0.85);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);z-index:50;border-bottom:1px solid transparent;transition:border-color 0.3s}
+.topbar.scrolled{border-bottom-color:var(--rule)}
+.topbar-inner{display:flex;justify-content:space-between;align-items:baseline;padding:22px 0}
+.mark{font-family:var(--serif);font-weight:400;font-size:17px;letter-spacing:-0.01em;font-variation-settings:"opsz" 14}
+.mark em{font-style:italic;color:var(--accent);font-variation-settings:"opsz" 14,"WONK" 1}
+nav.menu{display:flex;gap:24px;font-family:var(--mono);font-size:12px;text-transform:lowercase;letter-spacing:0.04em;color:var(--ink-soft)}
+nav.menu a{transition:color 0.2s;position:relative}
+nav.menu a:hover{color:var(--accent)}
+nav.menu a.active{color:var(--ink)}
+nav.menu a.active::after{content:"";position:absolute;left:0;right:0;bottom:-6px;height:1px;background:var(--ochre)}
+
+.page-hero{padding:80px 0 60px;display:grid;grid-template-columns:1fr 360px;gap:60px;align-items:end;border-bottom:1px solid var(--rule)}
+.eyebrow{font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:0.2em;color:var(--ink-mute);margin-bottom:28px;display:flex;align-items:center;gap:14px}
+.eyebrow::before{content:"";width:28px;height:1px;background:var(--ochre)}
+h1.page-title{font-family:var(--serif);font-weight:350;font-size:clamp(44px,6vw,86px);line-height:0.98;letter-spacing:-0.025em;font-variation-settings:"opsz" 144,"SOFT" 30}
+h1.page-title em{font-style:italic;color:var(--accent);font-variation-settings:"opsz" 144,"SOFT" 60,"WONK" 1}
+.page-intro{font-family:var(--serif);font-weight:350;font-size:17px;line-height:1.5;color:var(--ink-soft);font-variation-settings:"opsz" 18;padding-bottom:8px}
+
+.section-label{font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:0.2em;color:var(--ink-mute);margin-bottom:50px;display:flex;align-items:baseline;justify-content:space-between;border-bottom:1px solid var(--rule);padding-bottom:14px}
+.section-label .num{color:var(--ochre)}
+.events-section{padding:80px 0}
+.events-section + .events-section{padding-top:40px}
+
+/* Event card */
+.event{display:grid;grid-template-columns:120px 1fr 200px;gap:40px;padding:40px 0;border-bottom:1px solid var(--rule);position:relative;transition:padding 0.3s ease,background 0.3s ease}
+.event::before{content:"";position:absolute;left:-12px;top:50px;width:0;height:28px;background:var(--ochre);transition:width 0.3s cubic-bezier(0.16,1,0.3,1)}
+.event:hover::before{width:4px}
+.event:hover{padding-left:20px}
+.event-meta{display:flex;flex-direction:column;gap:6px;padding-top:8px}
+.event-year{font-family:var(--mono);font-size:12px;color:var(--ink);letter-spacing:0.02em}
+.event-place{font-family:var(--mono);font-size:10px;color:var(--ink-mute);text-transform:uppercase;letter-spacing:0.1em}
+.event-body{min-width:0}
+.event-tags{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}
+.tag{font-family:var(--mono);font-size:10px;text-transform:uppercase;letter-spacing:0.12em;padding:4px 10px;border-radius:100px;border:1px solid var(--rule);color:var(--ink-soft);background:rgba(255,255,255,0.3)}
+.tag.role{color:var(--accent);border-color:rgba(45,85,102,0.3)}
+.tag.kind{color:var(--ochre);border-color:rgba(160,107,58,0.3)}
+.event-title{font-family:var(--serif);font-weight:400;font-size:clamp(22px,2.4vw,28px);line-height:1.18;letter-spacing:-0.015em;margin-bottom:12px;font-variation-settings:"opsz" 36,"SOFT" 30}
+.event-title em{font-style:italic;color:var(--ink-soft);font-weight:350;font-variation-settings:"opsz" 36,"SOFT" 50,"WONK" 1}
+.event-host{font-family:var(--serif);font-size:14px;font-style:italic;color:var(--accent);margin-bottom:14px;font-variation-settings:"opsz" 18,"WONK" 1}
+.event-description{font-family:var(--serif);font-weight:350;font-size:16px;line-height:1.55;color:var(--ink-soft);font-variation-settings:"opsz" 18;margin-bottom:18px;max-width:62ch}
+.event-meta-line{font-family:var(--mono);font-size:11px;color:var(--ink-mute);line-height:1.7;margin-bottom:6px;letter-spacing:0.02em}
+.event-meta-line .label{display:inline-block;width:90px;text-transform:uppercase;letter-spacing:0.1em;color:var(--ink-mute);opacity:0.7}
+.event-meta-line .value{color:var(--ink-soft)}
+.event-links{margin-top:18px;display:flex;gap:22px;flex-wrap:wrap}
+.event-links a{font-family:var(--mono);font-size:12px;color:var(--accent);border-bottom:1px solid transparent;padding-bottom:2px;transition:border-color 0.2s}
+.event-links a:hover{border-bottom-color:var(--accent)}
+.event-links a::after{content:" ↗";opacity:0.6}
+
+.event-visual{align-self:center;width:100%;aspect-ratio:4/3;background:var(--paper-2);border:1px solid var(--rule);position:relative;overflow:hidden}
+.event-visual svg{position:absolute;inset:0;width:100%;height:100%;opacity:0.5}
+.motif-stroke{fill:none;stroke:var(--accent);stroke-width:0.8}
+.motif-stroke-2{fill:none;stroke:var(--ochre);stroke-width:0.8}
+
+/* Recent appearances list (compact) */
+.recent-list{border-top:1px solid var(--rule)}
+.recent{display:grid;grid-template-columns:80px 1fr 120px;gap:24px;padding:18px 0;border-bottom:1px solid var(--rule);align-items:baseline;transition:padding 0.3s,background 0.3s}
+.recent:hover{padding-left:12px;background:linear-gradient(90deg,var(--paper-2),transparent 60%)}
+.recent-year{font-family:var(--mono);font-size:12px;color:var(--ink-mute)}
+.recent-name{font-family:var(--serif);font-size:16px;font-variation-settings:"opsz" 18;line-height:1.4}
+.recent-name em{color:var(--ink-soft);font-style:italic;font-size:0.92em}
+.recent-name a{border-bottom:1px solid var(--rule);transition:border-color 0.2s,color 0.2s}
+.recent-name a:hover{border-bottom-color:var(--accent);color:var(--accent)}
+.recent-where{font-family:var(--mono);font-size:11px;color:var(--ink-mute);text-transform:uppercase;letter-spacing:0.1em;text-align:right}
+
+.contact-strip{padding:90px 0 60px;border-top:1px solid var(--rule);margin-top:40px}
+.contact-strip h2{font-family:var(--serif);font-weight:350;font-size:clamp(28px,4vw,44px);letter-spacing:-0.02em;line-height:1.1;font-variation-settings:"opsz" 144,"SOFT" 50;margin-bottom:16px}
+.contact-strip h2 em{color:var(--accent);font-style:italic;font-variation-settings:"opsz" 144,"SOFT" 70,"WONK" 1}
+.contact-strip p{font-family:var(--serif);font-size:17px;color:var(--ink-soft);margin-bottom:24px;font-variation-settings:"opsz" 18}
+.contact-strip a.cta{display:inline-block;font-family:var(--serif);font-style:italic;font-size:22px;color:var(--accent);border-bottom:1px solid var(--accent);padding-bottom:2px;font-variation-settings:"opsz" 30,"WONK" 1}
+
+footer{padding:30px 0 50px;border-top:1px solid var(--rule);font-family:var(--mono);font-size:11px;color:var(--ink-mute);display:flex;justify-content:space-between}
+
+@media (max-width:920px){.page-hero{grid-template-columns:1fr;gap:30px;padding:60px 0 40px}.event{grid-template-columns:80px 1fr;gap:24px}.event-visual{display:none}.recent{grid-template-columns:60px 1fr}.recent-where{display:none}}
+@media (max-width:560px){.wrap{padding:0 22px}.event{grid-template-columns:1fr;gap:12px;padding:32px 0}.event-meta{flex-direction:row;align-items:baseline;gap:14px}nav.menu{gap:14px;font-size:11px}nav.menu a:nth-child(n+4){display:none}}
+.reveal{opacity:0;transform:translateY(8px);animation:rise 0.9s cubic-bezier(0.16,1,0.3,1) forwards}.reveal.d1{animation-delay:0.06s}.reveal.d2{animation-delay:0.20s}@keyframes rise{to{opacity:1;transform:translateY(0)}}
+</style>
+</head>
+<body>
+
+<header class="topbar" id="topbar">
+  <div class="wrap topbar-inner">
+    <a href="index.html" class="mark">Supriya <em>Krishnan</em></a>
+    <nav class="menu">
+      <a href="index.html#about">about</a>
+      <a href="projects.html">projects</a>
+      <a href="events.html" class="active">events</a>
+      <a href="design.html">design</a>
+      <a href="publications.html">publications</a>
+      <a href="index.html#contact">contact</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <section class="page-hero">
+    <div>
+      <div class="eyebrow reveal">Index · 2017—2026</div>
+      <h1 class="page-title reveal d1">Events &amp; <em>Exhibits.</em></h1>
+    </div>
+    <p class="page-intro reveal d2">Convenings, exhibitions, and workshops at the intersection of climate, planning, and design — from Katowice to San Francisco, Amsterdam to Mumbai.</p>
+  </section>
+
+  <!-- ===== FEATURED EVENTS ===== -->
+  <section class="events-section">
+    <div class="section-label">
+      <span><span class="num">01 ·</span>&nbsp;&nbsp;Featured</span>
+      <span>Six events</span>
+    </div>
+
+    <!-- WUF -->
+    <article class="event">
+      <div class="event-meta">
+        <span class="event-year">June 2022</span>
+        <span class="event-place">Katowice, PL</span>
+      </div>
+      <div class="event-body">
+        <div class="event-tags">
+          <span class="tag role">Co-organiser</span>
+          <span class="tag kind">Workshop</span>
+        </div>
+        <h3 class="event-title">Resilience for All <em>— UN-Habitat World Urban Forum</em></h3>
+        <p class="event-host">An interdisciplinary training event hosted by TU Delft</p>
+        <p class="event-description">A 3-hour workshop bringing scientific planning support tools and methods to urban planners, policymakers, and civil servants — across socio-spatial equity, geographic data science, participatory co-design, and spatial tools for resilience. Co-organised with Dr. Nazli Yonca Aydin, supported by four TU Delft thematic labs.</p>
+        <div class="event-meta-line"><span class="label">Speakers</span> <span class="value">Roberto Rocco · Trivik Verma · Carissa Champlin · Claudiu Forgaci · Juliana Goncalves · Ylenia Casali · Mikhail Sirenko</span></div>
+        <div class="event-meta-line"><span class="label">Supported by</span> <span class="value">TPM Resilience Lab · TPM AI Lab · CUSP · TU Delft Global Urban Lab</span></div>
+        <div class="event-links">
+          <a href="https://wuf.unhabitat.org/event/resilience-all">Official event page</a>
+          <a href="https://surfdrive.surf.nl/files/index.php/s/eeHhuOMEhsgWp5t">Reading resources</a>
+        </div>
+      </div>
+      <div class="event-visual">
+        <!-- gathering / many voices motif -->
+        <svg viewBox="0 0 200 150" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+          <g class="motif-stroke">
+            <circle cx="40" cy="60" r="4"/><circle cx="65" cy="50" r="4"/><circle cx="100" cy="45" r="4"/><circle cx="135" cy="50" r="4"/><circle cx="160" cy="60" r="4"/>
+            <circle cx="50" cy="90" r="4"/><circle cx="85" cy="100" r="4"/><circle cx="115" cy="100" r="4"/><circle cx="150" cy="90" r="4"/>
+            <line x1="40" y1="60" x2="65" y2="50"/><line x1="65" y1="50" x2="100" y2="45"/><line x1="100" y1="45" x2="135" y2="50"/><line x1="135" y1="50" x2="160" y2="60"/>
+            <line x1="50" y1="90" x2="85" y2="100"/><line x1="85" y1="100" x2="115" y2="100"/><line x1="115" y1="100" x2="150" y2="90"/>
+            <line x1="65" y1="50" x2="50" y2="90"/><line x1="100" y1="45" x2="85" y2="100"/><line x1="100" y1="45" x2="115" y2="100"/><line x1="135" y1="50" x2="150" y2="90"/>
+          </g>
+        </svg>
+      </div>
+    </article>
+
+    <!-- Adaptation by Design -->
+    <article class="event">
+      <div class="event-meta">
+        <span class="event-year">2017</span>
+        <span class="event-place">San Francisco</span>
+      </div>
+      <div class="event-body">
+        <div class="event-tags">
+          <span class="tag role">Organiser · Exhibitor</span>
+          <span class="tag kind">Exhibition · Seminar</span>
+        </div>
+        <h3 class="event-title">Adaptation by Design <em>— Delta Interventions Studio</em></h3>
+        <p class="event-host">Synthesis of the TU Delft Delta Urbanism Research Programme, 2016–2017</p>
+        <p class="event-description">Exhibition and seminar reflecting on the Delta Interventions Studio's work in San Francisco Bay — a precursor to the BCDC's <em>Resilience by Design</em> competition. In collaboration with UC Berkeley's College of Environmental Design, the studio addressed Bay Area's adaptive capacity to climate uncertainty through systems thinking, landscape dynamics, urban morphology, and adaptation pathways.</p>
+        <div class="event-meta-line"><span class="label">Leaders</span> <span class="value">Han Meyer · Taneha Bacchin</span></div>
+        <div class="event-meta-line"><span class="label">Themes</span> <span class="value">Systems thinking · Building with Nature · Adaptive reuse · Cultural heritage</span></div>
+        <div class="event-links">
+          <a href="https://deltaurbanismtudelft.org/2017/06/21/adaptation-by-design-exhibition-and-seminar-delta-interventions-studio-2016-2017/">Programme website</a>
+        </div>
+      </div>
+      <div class="event-visual">
+        <!-- Delta / branching motif -->
+        <svg viewBox="0 0 200 150" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+          <g class="motif-stroke">
+            <path d="M100,20 Q95,50 80,75 Q70,95 50,120"/>
+            <path d="M100,20 Q105,50 120,75 Q130,95 150,120"/>
+            <path d="M100,20 Q100,50 100,75 Q100,95 100,120"/>
+            <path d="M80,75 Q60,85 40,95"/>
+            <path d="M120,75 Q140,85 160,95"/>
+          </g>
+          <g class="motif-stroke-2" opacity="0.5">
+            <path d="M0,130 Q50,125 100,128 T200,125" stroke-dasharray="2 4"/>
+          </g>
+        </svg>
+      </div>
+    </article>
+
+    <!-- RE-GROUND -->
+    <article class="event">
+      <div class="event-meta">
+        <span class="event-year">2021</span>
+        <span class="event-place">Amsterdam, NL</span>
+      </div>
+      <div class="event-body">
+        <div class="event-tags">
+          <span class="tag role">Lead</span>
+          <span class="tag kind">Expert Consultation</span>
+        </div>
+        <h3 class="event-title">RE-GROUND <em>— Resilient land-use scenarios for the Metropolitan Region of Amsterdam</em></h3>
+        <p class="event-host">Strategic consultation with planning practitioners and policy experts</p>
+        <p class="event-description">A methodology that combines model-based urban land-use simulations with design thinking to develop resilient spatial planning scenarios. Run as an exploratory expert design workshop with practitioners to align computational findings with local planning realities — testbed for spatial evidence on long-term urbanisation strategies.</p>
+        <div class="event-meta-line"><span class="label">Linked to</span> <span class="value"><a href="phd.html" style="border-bottom:1px solid var(--rule)">The Future Ground (PhD)</a></span></div>
+      </div>
+      <div class="event-visual">
+        <!-- Land-use scenario grid motif -->
+        <svg viewBox="0 0 200 150" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+          <g class="motif-stroke">
+            <rect x="30" y="40" width="40" height="30"/>
+            <rect x="80" y="40" width="40" height="30" opacity="0.7"/>
+            <rect x="130" y="40" width="40" height="30" opacity="0.4"/>
+            <rect x="30" y="85" width="40" height="30" opacity="0.4"/>
+            <rect x="80" y="85" width="40" height="30"/>
+            <rect x="130" y="85" width="40" height="30" opacity="0.6"/>
+          </g>
+          <g class="motif-stroke-2" opacity="0.7">
+            <line x1="50" y1="55" x2="100" y2="55"/>
+            <line x1="100" y1="55" x2="150" y2="100"/>
+          </g>
+        </svg>
+      </div>
+    </article>
+
+    <!-- Tokyo / Edogawa exhibition -->
+    <article class="event">
+      <div class="event-meta">
+        <span class="event-year">2018</span>
+        <span class="event-place">Tokyo, JP</span>
+      </div>
+      <div class="event-body">
+        <div class="event-tags">
+          <span class="tag role">Exhibitor</span>
+          <span class="tag kind">Exhibition</span>
+        </div>
+        <h3 class="event-title">22 Challenges in Flooding <em>— Gallery TEN, Tokyo</em></h3>
+        <p class="event-host">Exhibition on collaborative design-engineering for Edogawa ward</p>
+        <p class="event-description">Exhibited the Edogawa Water City and Parkway Edogawa design alternatives — proposals combining hydraulic engineering with spatial planning to reduce flood risk in one of Tokyo's most vulnerable wards. The exhibition framed the work alongside other contemporary responses to flooding in dense coastal regions.</p>
+        <div class="event-links">
+          <a href="http://www.gallery-ten.tokyo/archives/category/22-challenges-in-flooding">Gallery TEN archive</a>
+          <a href="https://www.mdpi.com/2076-3263/9/8/357">Published paper · Geosciences</a>
+        </div>
+      </div>
+      <div class="event-visual">
+        <svg viewBox="0 0 200 150" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+          <g class="motif-stroke">
+            <path d="M0,55 Q25,45 50,55 T100,55 T150,55 T200,55"/>
+            <path d="M0,75 Q25,65 50,75 T100,75 T150,75 T200,75" opacity="0.7"/>
+            <path d="M0,95 Q25,85 50,95 T100,95 T150,95 T200,95" opacity="0.5"/>
+          </g>
+          <g class="motif-stroke-2">
+            <rect x="60" y="100" width="20" height="20"/>
+            <rect x="90" y="100" width="20" height="20" opacity="0.7"/>
+            <rect x="120" y="100" width="20" height="20" opacity="0.5"/>
+          </g>
+        </svg>
+      </div>
+    </article>
+
+    <!-- NL Mumbai -->
+    <article class="event">
+      <div class="event-meta">
+        <span class="event-year">2021</span>
+        <span class="event-place">Mumbai, IN</span>
+      </div>
+      <div class="event-body">
+        <div class="event-tags">
+          <span class="tag role">Speaker</span>
+          <span class="tag kind">Convening</span>
+        </div>
+        <h3 class="event-title">Dutch Answers to Flood Management <em>&amp; Land Subsidence</em></h3>
+        <p class="event-host">Netherlands Consulate in Mumbai · SMART Water &amp; Waste World</p>
+        <p class="event-description">Invited talk: <em>Planning for a Resilient Mumbai</em> — translating Dutch delta-management practice for the Mumbai Metropolitan Region's flood and subsidence challenges. A bilateral knowledge exchange between Dutch hydraulic expertise and Indian spatial planning practice.</p>
+        <div class="event-links">
+          <a href="https://drive.google.com/file/d/1fhqv89su15_QdeBuq0eSKHh9qK_hekaT/view?usp=sharing">Slides</a>
+        </div>
+      </div>
+      <div class="event-visual">
+        <svg viewBox="0 0 200 150" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+          <g class="motif-stroke">
+            <circle cx="60" cy="75" r="22"/>
+            <circle cx="140" cy="75" r="22"/>
+            <line x1="82" y1="75" x2="118" y2="75"/>
+          </g>
+          <g class="motif-stroke-2" opacity="0.6">
+            <path d="M30,100 Q60,95 90,100" stroke-dasharray="2 3"/>
+            <path d="M110,100 Q140,95 170,100" stroke-dasharray="2 3"/>
+          </g>
+        </svg>
+      </div>
+    </article>
+
+    <!-- IWDRI -->
+    <article class="event">
+      <div class="event-meta">
+        <span class="event-year">2022</span>
+        <span class="event-place">New Delhi, IN</span>
+      </div>
+      <div class="event-body">
+        <div class="event-tags">
+          <span class="tag role">Speaker</span>
+          <span class="tag kind">Conference</span>
+        </div>
+        <h3 class="event-title">DRI Technical Conference <em>— Coalition for Disaster Resilient Infrastructure</em></h3>
+        <p class="event-host">Convening on urban risk and infrastructure resilience</p>
+        <p class="event-description">Invited talk on urban risk and planning for the Mumbai Metropolitan Region — set within CDRI's broader convening on resilient infrastructure across member nations. A bridging conversation between research, policy, and practice.</p>
+      </div>
+      <div class="event-visual">
+        <svg viewBox="0 0 200 150" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+          <g class="motif-stroke">
+            <line x1="40" y1="100" x2="40" y2="50"/><line x1="40" y1="50" x2="60" y2="50"/><line x1="60" y1="50" x2="60" y2="100"/>
+            <line x1="80" y1="100" x2="80" y2="35"/><line x1="80" y1="35" x2="120" y2="35"/><line x1="120" y1="35" x2="120" y2="100"/>
+            <line x1="140" y1="100" x2="140" y2="55"/><line x1="140" y1="55" x2="160" y2="55"/><line x1="160" y1="55" x2="160" y2="100"/>
+            <line x1="20" y1="100" x2="180" y2="100"/>
+          </g>
+          <g class="motif-stroke-2" opacity="0.6">
+            <line x1="20" y1="115" x2="180" y2="115" stroke-dasharray="2 3"/>
+          </g>
+        </svg>
+      </div>
+    </article>
+
+  </section>
+
+  <!-- ===== RECENT APPEARANCES ===== -->
+  <section class="events-section">
+    <div class="section-label">
+      <span><span class="num">02 ·</span>&nbsp;&nbsp;Recent Appearances</span>
+      <span>Selected</span>
+    </div>
+    <div class="recent-list">
+      <div class="recent">
+        <span class="recent-year">2025</span>
+        <div class="recent-name"><a href="https://www.esri.com/en-us/about/events/uc/overview">ESRI User Conference</a> <em>— spatial science &amp; the geospatial market</em></div>
+        <span class="recent-where">San Diego, CA</span>
+      </div>
+      <div class="recent">
+        <span class="recent-year">2025</span>
+        <div class="recent-name"><a href="https://cesium.com/events/cesium-developer-conference/">Cesium Developer Summit</a> <em>— trends in the open geospatial market</em></div>
+        <span class="recent-where">Speaker</span>
+      </div>
+      <div class="recent">
+        <span class="recent-year">2025</span>
+        <div class="recent-name"><a href="https://gis.harvard.edu/event/2025-cga-conference">Harvard CGA — Geography of Digital Twins</a></div>
+        <span class="recent-where">Cambridge, MA</span>
+      </div>
+      <div class="recent">
+        <span class="recent-year">2025</span>
+        <div class="recent-name">USGIF GEOINT Symposium</div>
+        <span class="recent-where">St Louis, MO</span>
+      </div>
+      <div class="recent">
+        <span class="recent-year">2024</span>
+        <div class="recent-name"><a href="https://reinventingthecity24.dryfta.com/">AMS Scientific Conference — Reinventing the City</a> <em>— RISE-UP talk</em></div>
+        <span class="recent-where">Amsterdam</span>
+      </div>
+      <div class="recent">
+        <span class="recent-year">2024</span>
+        <div class="recent-name">Allianz Climate Risk Award ceremony</div>
+        <span class="recent-where">Munich</span>
+      </div>
+      <div class="recent">
+        <span class="recent-year">2024</span>
+        <div class="recent-name">Harvard — International Workshop on Climate-Resilient Development in Southeast Asia</div>
+        <span class="recent-where">Cambridge, MA</span>
+      </div>
+      <div class="recent">
+        <span class="recent-year">2024</span>
+        <div class="recent-name">5th India Public Policy Network Conference, IIT Bombay <em>— Who Plans?</em></div>
+        <span class="recent-where">Mumbai</span>
+      </div>
+      <div class="recent">
+        <span class="recent-year">2023</span>
+        <div class="recent-name">Global Coastal Cities Summit <em>— Risk to Resilience</em></div>
+        <span class="recent-where">Mumbai</span>
+      </div>
+      <div class="recent">
+        <span class="recent-year">2023</span>
+        <div class="recent-name">International Conference on Resilient Systems (ICRES)</div>
+        <span class="recent-where">Mexico City</span>
+      </div>
+      <div class="recent">
+        <span class="recent-year">2022</span>
+        <div class="recent-name">Deep Uncertainty (DMDU) <em>— WHEN TO PLAN?</em></div>
+        <span class="recent-where">Mexico</span>
+      </div>
+      <div class="recent">
+        <span class="recent-year">2022</span>
+        <div class="recent-name">Geospatial World Forum <em>— Geospatial Tools for Urban Resilience</em></div>
+        <span class="recent-where">Netherlands</span>
+      </div>
+      <div class="recent">
+        <span class="recent-year">2021</span>
+        <div class="recent-name">CUPUM Conference, Aalto University <em>— Planning Support Systems</em></div>
+        <span class="recent-where">Finland</span>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<section class="contact-strip wrap">
+  <h2>Convening or <em>collaborating?</em></h2>
+  <p>Available for invited talks, workshops, panel moderation, and exhibition contributions on climate, urban resilience, and futures planning.</p>
+  <a href="mailto:supriya.urban@gmail.com" class="cta">supriya.urban@gmail.com</a>
+</section>
+
+<footer class="wrap">
+  <span>© 2026 Supriya Krishnan</span>
+  <span><a href="index.html">← back to home</a></span>
+</footer>
+
+<script>
+  const top=document.getElementById('topbar');
+  const onScroll=()=>top.classList.toggle('scrolled',window.scrollY>12);
+  window.addEventListener('scroll',onScroll,{passive:true});onScroll();
+</script>
+
+</body>
+</html>
