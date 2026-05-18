@@ -4,23 +4,21 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Supriya Krishnan — Urban planning under climate uncertainty</title>
-<meta name="description" content="Supriya Krishnan is an urban planner and architect researching how cities grow under climate transitions.">
+<meta name="description" content="Supriya Krishnan is an urban planner and architect researching how cities grow under climate transitions. PhD, TU Delft, 2026.">
 
-<!-- Fonts: Fraunces (distinctive variable serif), IBM Plex Sans, JetBrains Mono -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,300..900,0..100,0..1;1,9..144,300..900,0..100,0..1&family=IBM+Plex+Sans:wght@300;400;500&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
 
 <style>
 :root {
-  /* Climate cartographer palette: warm paper, marine ink, ochre accent */
-  --paper:    #ffffff;
+  --paper:    #f3efe6;
   --paper-2:  #ebe6d9;
   --ink:      #1c2126;
   --ink-soft: #4a4f56;
   --ink-mute: #7a7670;
-  --accent:   #2d5566;  /* deep marine */
-  --ochre:    #a06b3a;  /* earth, used sparingly */
+  --accent:   #2d5566;
+  --ochre:    #a06b3a;
   --rule:     #d8d2c3;
 
   --serif: "Fraunces", Georgia, serif;
@@ -35,65 +33,69 @@ body {
   font-family: var(--sans);
   background: var(--paper);
   color: var(--ink);
-  font-size: 16px;
+  font-size: 15px;
   line-height: 1.55;
-  font-weight: 400;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
-/* Subtle paper grain overlay */
 body::before {
   content: "";
   position: fixed; inset: 0;
   pointer-events: none;
   z-index: 1;
-  opacity: 0.05;
+  opacity: 0.045;
   background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='200' height='200' filter='url(%23n)'/></svg>");
 }
 
 a { color: inherit; text-decoration: none; }
 
 .wrap {
-  max-width: 1180px;
+  max-width: 1240px;
   margin: 0 auto;
-  padding: 0 32px;
+  padding: 0 36px;
   position: relative;
   z-index: 2;
+  width: 100%;
 }
 
 /* ===== Top bar ===== */
 .topbar {
-  position: sticky; top: 0;
-  background: rgba(243, 239, 230, 0.85);
+  background: rgba(243, 239, 230, 0.9);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   z-index: 50;
-  border-bottom: 1px solid transparent;
-  transition: border-color 0.3s;
+  border-bottom: 1px solid var(--rule);
+  flex-shrink: 0;
 }
-.topbar.scrolled { border-bottom-color: var(--rule); }
 .topbar-inner {
   display: flex;
   justify-content: space-between;
   align-items: baseline;
-  padding: 22px 0;
+  padding: 16px 0;
 }
 .mark {
   font-family: var(--serif);
   font-weight: 400;
-  font-size: 17px;
+  font-size: 16px;
   letter-spacing: -0.01em;
   font-variation-settings: "opsz" 14;
+  color: var(--ink);
 }
-.mark em {
-  font-style: italic;
-  color: var(--accent);
-  font-variation-settings: "opsz" 14, "WONK" 1;
+.mark .mono-affil {
+  font-family: var(--mono);
+  font-size: 10.5px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--ink-mute);
+  margin-left: 8px;
 }
 nav.menu {
   display: flex;
-  gap: 28px;
+  gap: 26px;
   font-family: var(--mono);
   font-size: 12px;
   text-transform: lowercase;
@@ -103,508 +105,542 @@ nav.menu {
 nav.menu a { transition: color 0.2s; }
 nav.menu a:hover { color: var(--accent); }
 
-/* ===== Hero ===== */
-.hero {
-  padding: 110px 0 80px;
-  position: relative;
+main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
 }
-.eyebrow {
+
+/* ===== Hero (sober, CV-like) ===== */
+.hero {
+  padding: 50px 0 40px;
+  position: relative;
+  border-bottom: 1px solid var(--rule);
+}
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1fr 280px;
+  gap: 60px;
+  align-items: start;
+}
+.hero-left { min-width: 0; }
+
+.role-line {
   font-family: var(--mono);
   font-size: 11px;
   text-transform: uppercase;
-  letter-spacing: 0.2em;
+  letter-spacing: 0.18em;
   color: var(--ink-mute);
-  margin-bottom: 28px;
+  margin-bottom: 26px;
   display: flex;
   align-items: center;
   gap: 14px;
 }
-.eyebrow::before {
+.role-line::before {
   content: "";
   width: 28px;
   height: 1px;
   background: var(--ochre);
 }
-h1.headline {
+
+h1.name {
   font-family: var(--serif);
   font-weight: 350;
-  font-size: clamp(40px, 6vw, 78px);
-  line-height: 1.02;
+  font-size: clamp(40px, 5vw, 60px);
+  line-height: 1.0;
   letter-spacing: -0.025em;
-  font-variation-settings: "opsz" 144, "SOFT" 30;
-  max-width: 17ch;
-  margin-bottom: 36px;
+  font-variation-settings: "opsz" 144, "SOFT" 20;
   color: var(--ink);
+  margin-bottom: 12px;
 }
-h1.headline em {
+
+.role-sub {
+  font-family: var(--serif);
   font-style: italic;
+  font-weight: 350;
+  font-size: clamp(18px, 1.55vw, 22px);
+  line-height: 1.3;
   color: var(--accent);
-  font-variation-settings: "opsz" 144, "SOFT" 60, "WONK" 1;
+  font-variation-settings: "opsz" 24, "WONK" 1;
+  margin-bottom: 26px;
+  max-width: 30ch;
 }
-.lead {
+
+.research-statement {
   font-family: var(--serif);
   font-weight: 350;
-  font-size: clamp(18px, 1.6vw, 22px);
-  line-height: 1.45;
+  font-size: 16px;
+  line-height: 1.55;
   max-width: 56ch;
   color: var(--ink-soft);
-  font-variation-settings: "opsz" 24;
+  font-variation-settings: "opsz" 20;
+  margin-bottom: 18px;
 }
-
-/* Horizon line decoration — subtle scenario/future motif */
-.horizon {
-  position: absolute;
-  right: 32px;
-  top: 130px;
-  width: clamp(180px, 24vw, 320px);
-  opacity: 0.55;
-  pointer-events: none;
-  animation: drift 9s ease-in-out infinite;
-}
-.horizon path { fill: none; stroke: var(--accent); stroke-width: 1; }
-.horizon path:nth-child(2) { stroke: var(--ochre); opacity: 0.6; }
-@keyframes drift {
-  0%, 100% { transform: translateY(0); }
-  50%      { transform: translateY(-6px); }
-}
-
-.now {
-  margin-top: 44px;
-  display: inline-flex;
-  align-items: center;
-  gap: 12px;
-  padding: 8px 14px;
-  border: 1px solid var(--rule);
-  border-radius: 100px;
-  font-family: var(--mono);
-  font-size: 12px;
-  color: var(--ink-soft);
-  background: rgba(255, 255, 255, 0.4);
-}
-.now-dot {
-  width: 6px; height: 6px;
-  border-radius: 50%;
-  background: var(--ochre);
-  animation: pulse 2.4s ease-in-out infinite;
-}
-@keyframes pulse {
-  0%, 100% { opacity: 0.4; transform: scale(1); }
-  50%      { opacity: 1;   transform: scale(1.3); }
-}
-
-/* ===== Sections ===== */
-section { padding: 90px 0; position: relative; }
-section + section { border-top: 1px solid var(--rule); }
-
-.section-label {
-  font-family: var(--mono);
-  font-size: 11px;
-  text-transform: uppercase;
-  letter-spacing: 0.2em;
-  color: var(--ink-mute);
-  margin-bottom: 40px;
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-}
-.section-label .num { color: var(--ochre); }
-
-/* About */
-.about-grid {
-  display: grid;
-  grid-template-columns: 1fr 280px;
-  gap: 80px;
-  align-items: start;
-}
-.about p {
-  font-family: var(--serif);
-  font-weight: 350;
-  font-size: 18px;
-  line-height: 1.55;
-  color: var(--ink);
-  font-variation-settings: "opsz" 24;
-  margin-bottom: 1.2em;
-  max-width: 60ch;
-}
-.about p a {
+.research-statement a {
   border-bottom: 1px solid var(--rule);
   transition: border-color 0.2s, color 0.2s;
 }
-.about p a:hover { border-bottom-color: var(--accent); color: var(--accent); }
-.about p em { font-style: italic; color: var(--accent); }
+.research-statement a:hover { border-bottom-color: var(--accent); color: var(--accent); }
 
-.aside {
+.status-line {
   font-family: var(--mono);
-  font-size: 12px;
+  font-size: 11.5px;
   color: var(--ink-soft);
-  line-height: 1.7;
+  letter-spacing: 0.02em;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding-top: 4px;
 }
-.aside dt {
-  color: var(--ink-mute);
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  font-size: 10px;
-  margin-top: 16px;
+.status-line .marker {
+  width: 6px; height: 6px;
+  background: var(--ochre);
+  border-radius: 50%;
+  display: inline-block;
 }
-.aside dd { color: var(--ink); margin-bottom: 4px; }
-.aside dl > div:first-child dt { margin-top: 0; }
+.status-line a {
+  color: var(--accent);
+  border-bottom: 1px solid var(--accent);
+  padding-bottom: 1px;
+}
 
-/* Approach / methodology */
-.method {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  border-top: 1px solid var(--rule);
-}
-.method-item {
-  padding: 32px 28px 32px 0;
-  border-right: 1px solid var(--rule);
-}
-.method-item:last-child { border-right: none; padding-right: 0; }
-.method-item:not(:first-child) { padding-left: 28px; }
-.method-num {
+/* Hero aside — CV summary */
+.hero-aside {
   font-family: var(--mono);
   font-size: 11px;
-  color: var(--ochre);
-  margin-bottom: 14px;
-  letter-spacing: 0.1em;
-}
-.method-item h3 {
-  font-family: var(--serif);
-  font-weight: 400;
-  font-size: 22px;
-  letter-spacing: -0.01em;
-  margin-bottom: 10px;
-  font-variation-settings: "opsz" 30;
-}
-.method-item p {
-  font-size: 14px;
+  color: var(--ink-soft);
   line-height: 1.55;
-  color: var(--ink-soft);
+  border-left: 1px solid var(--rule);
+  padding: 4px 0 4px 24px;
 }
-
-/* Entry list (work / publications) */
-.entry-list { border-top: 1px solid var(--rule); }
-.entry {
-  display: grid;
-  grid-template-columns: 80px 1fr 140px;
-  gap: 24px;
-  padding: 22px 0;
-  border-bottom: 1px solid var(--rule);
-  align-items: baseline;
-  transition: padding 0.3s ease, background 0.3s ease;
-}
-.entry:hover {
-  padding-left: 12px;
-  background: linear-gradient(90deg, var(--paper-2), transparent 60%);
-}
-.entry .year {
+.hero-aside .aside-label {
   font-family: var(--mono);
-  font-size: 12px;
-  color: var(--ink-mute);
-}
-.entry .title {
-  font-family: var(--serif);
-  font-size: 17px;
-  font-variation-settings: "opsz" 18;
-  line-height: 1.4;
-  transition: color 0.2s;
-}
-.entry .title em {
-  color: var(--ink-soft);
-  font-style: italic;
-  font-size: 0.92em;
-}
-.entry:hover a.title { color: var(--accent); }
-.entry .kind {
-  font-family: var(--mono);
-  font-size: 11px;
+  font-size: 9.5px;
   text-transform: uppercase;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.18em;
   color: var(--ink-mute);
-  text-align: right;
+  margin-bottom: 12px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--rule);
 }
+.hero-aside dt {
+  color: var(--ink-mute);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 9.5px;
+  margin-top: 14px;
+}
+.hero-aside dd { color: var(--ink); font-size: 12px; }
+.hero-aside dl > div:first-of-type dt { margin-top: 0; }
 
-/* Now / updates */
-.updates {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 24px 60px;
-}
-.update {
-  font-family: var(--serif);
-  font-size: 16px;
-  font-variation-settings: "opsz" 18;
-  line-height: 1.5;
-  color: var(--ink);
-  position: relative;
-  padding-left: 22px;
-}
-.update::before {
-  content: "→";
+.horizon {
   position: absolute;
-  left: 0;
-  color: var(--ochre);
-  font-family: var(--mono);
+  right: 320px;
+  top: 70px;
+  width: clamp(120px, 14vw, 180px);
+  opacity: 0.28;
+  pointer-events: none;
+  z-index: 1;
 }
-.update a { border-bottom: 1px solid var(--rule); }
-.update a:hover { border-bottom-color: var(--accent); color: var(--accent); }
+.horizon path { fill: none; stroke: var(--accent); stroke-width: 0.9; }
+.horizon path:nth-child(2) { stroke: var(--ochre); opacity: 0.6; }
 
-/* Contact */
-.contact { padding: 100px 0 60px; }
-.contact-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 60px;
-  align-items: end;
+/* ===== Info grid ===== */
+.info {
+  padding: 38px 0 50px;
+  flex: 1;
 }
-.contact h2 {
+.info-grid {
+  display: grid;
+  grid-template-columns: 1.15fr 1fr 1fr;
+  gap: 56px;
+}
+.col-head {
+  font-family: var(--mono);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--ink-mute);
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--rule);
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+}
+.col-head .num { color: var(--ochre); }
+
+/* Research column */
+.col-research p {
   font-family: var(--serif);
   font-weight: 350;
-  font-size: clamp(36px, 5vw, 60px);
-  letter-spacing: -0.02em;
-  line-height: 1;
-  font-variation-settings: "opsz" 144, "SOFT" 50;
+  font-size: 14.5px;
+  line-height: 1.6;
+  color: var(--ink);
+  font-variation-settings: "opsz" 18;
+  margin-bottom: 0.9em;
 }
-.contact h2 em {
-  color: var(--accent);
-  font-style: italic;
-  font-variation-settings: "opsz" 144, "SOFT" 70, "WONK" 1;
+.col-research p a {
+  border-bottom: 1px solid var(--rule);
+  transition: border-color 0.2s, color 0.2s;
 }
-.email-link {
-  display: inline-block;
-  margin-top: 24px;
+.col-research p a:hover { border-bottom-color: var(--accent); color: var(--accent); }
+.col-research p em { font-style: italic; }
+
+.themes-block {
+  margin-top: 20px;
+  padding-top: 18px;
+  border-top: 1px dashed var(--rule);
+}
+.themes-label {
+  font-family: var(--mono);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--ink-mute);
+  margin-bottom: 12px;
+}
+.themes {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 16px;
+}
+.theme {
+  font-family: var(--mono);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--ink-soft);
+  line-height: 1.5;
+}
+.theme strong {
+  display: block;
   font-family: var(--serif);
-  font-size: 24px;
+  font-weight: 400;
+  font-size: 13.5px;
+  letter-spacing: -0.005em;
+  color: var(--ink);
+  text-transform: none;
+  margin-bottom: 4px;
+  font-variation-settings: "opsz" 18;
+}
+
+/* Publications column */
+.pub-list { }
+.pub-item {
+  display: grid;
+  grid-template-columns: 44px 1fr;
+  gap: 14px;
+  padding: 11px 0;
+  border-bottom: 1px solid var(--rule);
+  align-items: baseline;
+  transition: padding 0.25s, background 0.25s;
+}
+.pub-item:first-child { padding-top: 0; }
+.pub-item:hover { padding-left: 8px; background: linear-gradient(90deg, var(--paper-2), transparent 70%); }
+.pub-item .year {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--ink-mute);
+}
+.pub-item .title {
+  font-family: var(--serif);
+  font-size: 14px;
+  line-height: 1.4;
+  font-variation-settings: "opsz" 16;
+  transition: color 0.2s;
+}
+.pub-item .title em {
+  color: var(--ink-soft);
   font-style: italic;
+  font-size: 0.93em;
+}
+.pub-item:hover a.title { color: var(--accent); }
+
+.col-link {
+  display: inline-block;
+  margin-top: 16px;
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--accent);
+  border-bottom: 1px solid var(--accent);
+  padding-bottom: 1px;
+  letter-spacing: 0.04em;
+}
+
+/* News + Contact column */
+.col-now-connect { display: flex; flex-direction: column; }
+
+.news-item {
+  font-family: var(--serif);
+  font-size: 13.5px;
+  font-variation-settings: "opsz" 16;
+  line-height: 1.5;
+  color: var(--ink);
+  display: grid;
+  grid-template-columns: 60px 1fr;
+  gap: 10px;
+  margin-bottom: 11px;
+}
+.news-item:last-child { margin-bottom: 0; }
+.news-item .news-date {
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--ink-mute);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding-top: 2px;
+}
+.news-item a {
+  border-bottom: 1px solid var(--rule);
+  transition: border-color 0.2s, color 0.2s;
+}
+.news-item a:hover { border-bottom-color: var(--accent); color: var(--accent); }
+.news-item em { font-style: italic; color: var(--ink-soft); }
+
+.contact-block {
+  margin-top: 28px;
+  padding-top: 22px;
+  border-top: 1px solid var(--rule);
+}
+.contact-block .col-head { margin-bottom: 14px; }
+.contact-email {
+  font-family: var(--serif);
+  font-size: 17px;
   color: var(--accent);
   border-bottom: 1px solid var(--accent);
   padding-bottom: 2px;
+  font-variation-settings: "opsz" 20;
+  display: inline-block;
+  margin-bottom: 16px;
   transition: opacity 0.2s;
-  font-variation-settings: "opsz" 30, "WONK" 1;
 }
-.email-link:hover { opacity: 0.7; }
-
-.contact-aside {
-  font-family: var(--mono);
-  font-size: 12px;
-  color: var(--ink-soft);
-}
-.contact-aside a {
-  display: block;
-  padding: 10px 0;
-  border-bottom: 1px solid var(--rule);
-  transition: padding 0.2s, color 0.2s;
-}
-.contact-aside a:hover { padding-left: 8px; color: var(--accent); }
-.contact-aside a::after { content: " ↗"; color: var(--ink-mute); }
-
-footer {
-  padding: 30px 0 50px;
-  border-top: 1px solid var(--rule);
+.contact-email:hover { opacity: 0.7; }
+.socials {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
   font-family: var(--mono);
   font-size: 11px;
+  color: var(--ink-soft);
+}
+.socials a {
+  border-bottom: 1px solid var(--rule);
+  padding-bottom: 1px;
+  transition: border-color 0.2s, color 0.2s;
+}
+.socials a:hover { border-bottom-color: var(--accent); color: var(--accent); }
+.socials a::after { content: " ↗"; opacity: 0.5; }
+
+footer {
+  padding: 18px 0 22px;
+  border-top: 1px solid var(--rule);
+  font-family: var(--mono);
+  font-size: 10.5px;
   color: var(--ink-mute);
+  flex-shrink: 0;
+}
+.footer-inner {
   display: flex;
   justify-content: space-between;
+  width: 100%;
 }
 
-/* Responsive */
-@media (max-width: 880px) {
+/* ===== Responsive ===== */
+@media (max-width: 1080px) {
+  .info-grid { grid-template-columns: 1fr 1fr; gap: 44px; }
+  .col-now-connect { grid-column: 1 / -1; }
+  .col-now-connect-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 44px; }
+}
+@media (max-width: 820px) {
   .horizon { display: none; }
-  .about-grid { grid-template-columns: 1fr; gap: 40px; }
-  .method { grid-template-columns: 1fr; }
-  .method-item {
-    border-right: none;
-    border-bottom: 1px solid var(--rule);
-    padding: 24px 0 !important;
-  }
-  .method-item:last-child { border-bottom: none; }
-  .updates { grid-template-columns: 1fr; }
-  .contact-grid { grid-template-columns: 1fr; gap: 40px; }
-  .entry { grid-template-columns: 60px 1fr; }
-  .entry .kind { display: none; }
-  nav.menu { gap: 18px; font-size: 11px; }
+  .hero { padding: 36px 0 30px; }
+  .hero-grid { grid-template-columns: 1fr; gap: 28px; }
+  .hero-aside { border-left: none; padding-left: 0; border-top: 1px solid var(--rule); padding-top: 22px; }
+  .hero-aside dl { display: grid; grid-template-columns: 1fr 1fr; gap: 12px 24px; }
+  .info-grid { grid-template-columns: 1fr; gap: 32px; }
+  .col-now-connect-inner { grid-template-columns: 1fr; gap: 32px; }
+  .themes { grid-template-columns: 1fr; }
 }
 @media (max-width: 520px) {
   .wrap { padding: 0 22px; }
-  .hero { padding: 70px 0 50px; }
-  section { padding: 60px 0; }
-  nav.menu a:not(.contact-nav) { display: none; }
+  nav.menu { gap: 14px; font-size: 11px; }
+  nav.menu a:nth-child(n+5) { display: none; }
+  .mark .mono-affil { display: none; }
+  h1.name { font-size: 38px; }
 }
 
-/* Reveal-on-load (CSS only) */
 .reveal { opacity: 0; transform: translateY(8px); animation: rise 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
 .reveal.d1 { animation-delay: 0.06s; }
-.reveal.d2 { animation-delay: 0.20s; }
-.reveal.d3 { animation-delay: 0.36s; }
+.reveal.d2 { animation-delay: 0.16s; }
+.reveal.d3 { animation-delay: 0.26s; }
+.reveal.d4 { animation-delay: 0.36s; }
 @keyframes rise { to { opacity: 1; transform: translateY(0); } }
 </style>
 </head>
 <body>
 
-<header class="topbar" id="topbar">
+<header class="topbar">
   <div class="wrap topbar-inner">
-    <a href="#" class="mark">Supriya <em>Krishnan</em></a>
+    <a href="index.html" class="mark">Supriya Krishnan<span class="mono-affil">PhD, TU Delft 2026</span></a>
     <nav class="menu">
-      <a href="#about">about</a>
       <a href="projects.html">projects</a>
+      <a href="publications.html">publications</a>
       <a href="events.html">events</a>
       <a href="design.html">design</a>
-      <a href="publications.html">publications</a>
-      <a href="#contact" class="contact-nav">contact</a>
+      <a href="mailto:supriya.urban@gmail.com">contact</a>
     </nav>
   </div>
 </header>
 
-<main class="wrap">
+<main>
 
   <!-- ===== HERO ===== -->
   <section class="hero">
-    <svg class="horizon" viewBox="0 0 320 120" aria-hidden="true">
-      <path d="M0,80 Q40,60 80,72 T160,68 T240,75 T320,62"/>
-      <path d="M0,95 Q60,82 120,90 T240,88 T320,80"/>
-      <path d="M0,108 L320,108" stroke-dasharray="2 4" opacity="0.4"/>
-    </svg>
+    <div class="wrap">
+      <svg class="horizon" viewBox="0 0 320 100" aria-hidden="true">
+        <path d="M0,60 Q40,45 80,55 T160,52 T240,58 T320,48"/>
+        <path d="M0,78 Q60,68 120,72 T240,72 T320,66"/>
+        <path d="M0,92 L320,92" stroke-dasharray="2 4" opacity="0.4"/>
+      </svg>
 
-    <div class="eyebrow reveal">Climate · Cities · Futures</div>
-    <h2 class="headline reveal d1">Designing and Thinking about cities <em></em></h2>
-    <p class="lead reveal d2">Urban planner and architect studying how regions grow under big transitions, bridging long-term climate commitments and technologies with short-term action.</p>
-    <span class="now reveal d3"><span class="now-dot"></span>On the 2026 job market — get in touch at supriya.urban@gmail.com</span>
-  </section>
+      <div class="hero-grid">
+        <div class="hero-left">
+          <div class="role-line reveal">Researcher · Urban planning &amp; climate adaptation</div>
 
-  <!-- ===== ABOUT ===== -->
-  <section id="about">
-    <div class="section-label">
-      <span><span class="num">01 ·</span>&nbsp;&nbsp;About</span>
-      <span>Providence, RI</span>
-    </div>
-    <div class="about-grid">
-      <div class="about">
-        <p>My doctoral work at <a href="https://www.tudelft.nl">TU Delft</a> focuses on <em>Urban Planning Under Climate Uncertainty</em> — examining how to integrate near-term action with long-term climate commitments.</p>
-        <p>Professionally, I've provided knowledge support on urban development, resilient infrastructure, and disaster risk reduction to <a href="https://www.undrr.org/">UNDRR</a>, the <a href="https://www.cdri.world/">Coalition for Disaster Resilient Infrastructure</a>, the <a href="https://cudrr.org/">Center for Urban Disaster Risk Reduction and Resilience</a>, India's <a href="https://ndma.gov.in/">National Disaster Management Authority</a>, and the <a href="https://www.nipfp.org.in/">National Institute of Public Finance and Policy</a>.</p>
-      </div>
-      <dl class="aside">
-        <div><dt>Based</dt><dd>Providence / Boston</dd></div>
-        <div><dt>PhD</dt><dd>TU Delft, 2026</dd></div>
-        <div><dt>Fellowships</dt><dd>C40 Women4Climate</dd><dd>TU Delft Global</dd></div>
-        <div><dt>Award</dt><dd>Allianz Climate Risk, 2024</dd></div>
-      </dl>
-    </div>
-  </section>
+          <h1 class="name reveal d1">Supriya Krishnan.</h1>
+          <p class="role-sub reveal d1">Urban planner &amp; architect, researching cities under climate uncertainty.</p>
 
-  <!-- ===== APPROACH ===== -->
-  <section id="approach">
-    <div class="section-label">
-      <span><span class="num">02 ·</span>&nbsp;&nbsp;Approach</span>
-      <span>Methodology</span>
-    </div>
-    <div class="method">
-      <div class="method-item">
-        <div class="method-num">i.</div>
-        <h3>Systems Thinking</h3>
-        <p>Reading cities as interconnected, dynamic, evolving organisms — not static plans.</p>
-      </div>
-      <div class="method-item">
-        <div class="method-num">ii.</div>
-        <h3>Foresight &amp; Scenarios</h3>
-        <p>Building strategies that remain robust across multiple climate futures.</p>
-      </div>
-      <div class="method-item">
-        <div class="method-num">iii.</div>
-        <h3>Data Equity</h3>
-        <p>How disparities in geospatial knowledge shape resilience in developing regions.</p>
+          <p class="research-statement reveal d2">
+            My work integrates near-term planning action with long-term climate commitments. Doctoral research at <a href="https://www.tudelft.nl">TU Delft</a> on planning under deep uncertainty, with knowledge support to <a href="https://www.undrr.org/">UNDRR</a>, the <a href="https://www.cdri.world/">CDRI</a>, <a href="https://cudrr.org/">CUDRR&amp;R</a>, India's <a href="https://ndma.gov.in/">NDMA</a>, and the <a href="https://www.nipfp.org.in/">NIPFP</a>.
+          </p>
+
+          <div class="status-line reveal d3">
+            <span class="marker"></span>
+            <span>Open to research &amp; policy positions, 2026 &nbsp;·&nbsp; <a href="mailto:supriya.urban@gmail.com">supriya.urban@gmail.com</a></span>
+          </div>
+        </div>
+
+        <aside class="hero-aside reveal d4">
+          <div class="aside-label">Profile</div>
+          <dl>
+            <div><dt>Based</dt><dd>Providence / Boston, US</dd></div>
+            <div><dt>PhD</dt><dd>TU Delft · Defended March 2026</dd></div>
+            <div><dt>Recognition</dt><dd>Allianz Climate Risk Award, 2024</dd></div>
+            <div><dt>Fellowships</dt><dd>C40 Women4Climate</dd><dd>TU Delft Global</dd></div>
+            <div><dt>Trained</dt><dd>Architecture &amp; urban planning</dd></div>
+          </dl>
+        </aside>
       </div>
     </div>
   </section>
 
-  <!-- ===== WORK ===== -->
-  <section id="work">
-    <div class="section-label">
-      <span><span class="num">03 ·</span>&nbsp;&nbsp;Selected Work</span>
-      <span>2021—</span>
-    </div>
-    <div class="entry-list">
-      <div class="entry">
-        <span class="year">2026</span>
-        <a href="projects.html" class="title">The Future Ground — Planning Cities for an Uncertain Future</a>
-        <span class="kind">Project</span>
-      </div>
-      <div class="entry">
-        <span class="year">2024</span>
-        <a href="https://www.allianz.com/en/mediacenter/news/media-releases/241202-allianz-climate-risk-award-2024.html" class="title">Allianz Climate Risk Award</a>
-        <span class="kind">Award</span>
-      </div>
-      <div class="entry">
-        <span class="year">2024</span>
-        <a href="https://www.nature.com/articles/s42949-024-00140-5" class="title">TIMEWISE: Temporal dynamics for urban resilience <em>— npj Urban Sustainability</em></a>
-        <span class="kind">Paper</span>
-      </div>
-      <div class="entry">
-        <span class="year">2023</span>
-        <a href="https://www.sciencedirect.com/science/article/pii/S0264275123002767" class="title">RISE-UP: Resilience in urban planning for climate uncertainty <em>— Cities</em></a>
-        <span class="kind">Paper</span>
-      </div>
-      <div class="entry">
-        <span class="year">2022</span>
-        <a href="https://wuf.unhabitat.org/event/resilience-all" class="title">Resilience for All <em>— World Urban Forum, Katowice</em></a>
-        <span class="kind">Workshop</span>
-      </div>
-      <div class="entry">
-        <span class="year">2021</span>
-        <a href="https://www.researchgate.net/profile/Supriya-Krishnan-3/publication/353264757" class="title">Planning support systems for long-term climate resilience</a>
-        <span class="kind">Paper</span>
-      </div>
-    </div>
-    <a href="projects.html" style="display:inline-block;margin-top:28px;font-family:var(--mono);font-size:12px;color:var(--accent);border-bottom:1px solid var(--accent);padding-bottom:2px;letter-spacing:0.04em;">View all projects →</a>
-  </section>
+  <!-- ===== INFO GRID ===== -->
+  <section class="info">
+    <div class="wrap">
+      <div class="info-grid">
 
-  <!-- ===== NOW ===== -->
-  <section id="now">
-    <div class="section-label">
-      <span><span class="num">04 ·</span>&nbsp;&nbsp;Now</span>
-      <span>Currently</span>
-    </div>
-    <div class="updates">
-      <div class="update">Speaking on open geospatial trends at the Cesium Developer Summit.</div>
-      <div class="update">Presenting at the Harvard Conference on the Geography of Digital Twins.</div>
-      <div class="update">At ESRI UC and USGIF GEOINT — say hi in San Diego and St Louis.</div>
-      <div class="update">Writing on infrastructure age and risk in <a href="https://scroll.in/article/1036980">Scroll</a>.</div>
+        <!-- Research column -->
+        <div class="col-research">
+          <h2 class="col-head"><span><span class="num">01 ·</span>&nbsp;&nbsp;Research</span><span>Themes &amp; methods</span></h2>
+          <p>I study how urban and urbanising regions can grow under big transitions — building strategies that reconcile immediate infrastructure needs with the volatility of climate disruption. The thesis, <em>The Future Ground: Urban Planning Under Climate Uncertainty</em>, develops a hybrid scenario-building method tested empirically across India and the Netherlands.</p>
+          <p>Beyond the academy, I work on translating research into planning practice — through advisory engagements, expert consultations, and writing for general audiences on India's urbanisation, infrastructure, and disaster risk.</p>
+
+          <div class="themes-block">
+            <div class="themes-label">Research themes</div>
+            <div class="themes">
+              <div class="theme"><strong>Systems</strong>Cities as interconnected, evolving organisms.</div>
+              <div class="theme"><strong>Foresight</strong>Strategies robust across multiple climate futures.</div>
+              <div class="theme"><strong>Equity</strong>Geospatial knowledge &amp; the Global South.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Publications column -->
+        <div class="col-pub">
+          <h2 class="col-head"><span><span class="num">02 ·</span>&nbsp;&nbsp;Selected Publications &amp; Work</span><span>2021—</span></h2>
+          <div class="pub-list">
+            <div class="pub-item">
+              <span class="year">2026</span>
+              <a href="projects.html" class="title">The Future Ground <em>— PhD thesis, TU Delft</em></a>
+            </div>
+            <div class="pub-item">
+              <span class="year">2024</span>
+              <a href="https://www.allianz.com/en/mediacenter/news/media-releases/241202-allianz-climate-risk-award-2024.html" class="title">Allianz Climate Risk Award</a>
+            </div>
+            <div class="pub-item">
+              <span class="year">2024</span>
+              <a href="https://www.nature.com/articles/s42949-024-00140-5" class="title">TIMEWISE: Temporal dynamics for urban resilience <em>— npj Urban Sustainability</em></a>
+            </div>
+            <div class="pub-item">
+              <span class="year">2023</span>
+              <a href="https://www.sciencedirect.com/science/article/pii/S0264275123002767" class="title">RISE-UP: Resilience in urban planning <em>— Cities</em></a>
+            </div>
+            <div class="pub-item">
+              <span class="year">2021</span>
+              <a href="https://link.springer.com/chapter/10.1007/978-3-030-76059-5_24" class="title">Planning Support Systems for Long-Term Climate Resilience <em>— book chapter</em></a>
+            </div>
+          </div>
+          <a href="publications.html" class="col-link">All publications →</a>
+        </div>
+
+        <!-- News + Contact column -->
+        <div class="col-now-connect">
+          <div class="col-now-connect-inner">
+
+            <div>
+              <h2 class="col-head"><span><span class="num">03 ·</span>&nbsp;&nbsp;News</span><span>Recent</span></h2>
+              <div class="news-list">
+                <div class="news-item">
+                  <span class="news-date">Mar 2026</span>
+                  <span>PhD defended at TU Delft.</span>
+                </div>
+                <div class="news-item">
+                  <span class="news-date">2025</span>
+                  <span>Speaking on open geospatial trends at <em>Cesium Developer Summit</em>.</span>
+                </div>
+                <div class="news-item">
+                  <span class="news-date">2025</span>
+                  <span>Presenting at <em>Harvard CGA — Geography of Digital Twins</em>.</span>
+                </div>
+                <div class="news-item">
+                  <span class="news-date">2025</span>
+                  <span>At ESRI UC &amp; USGIF GEOINT — San Diego &amp; St Louis.</span>
+                </div>
+                <div class="news-item">
+                  <span class="news-date">2024</span>
+                  <span>Writing on infrastructure age &amp; risk in <a href="https://scroll.in/article/1036980">Scroll</a>.</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="contact-block" style="margin-top:0;padding-top:0;border-top:none">
+              <h2 class="col-head"><span><span class="num">04 ·</span>&nbsp;&nbsp;Contact</span><span>Direct</span></h2>
+              <a href="mailto:supriya.urban@gmail.com" class="contact-email">supriya.urban@gmail.com</a>
+              <div class="socials">
+                <a href="https://www.linkedin.com/in/supriya-krishnan-22704319/">LinkedIn</a>
+                <a href="https://scholar.google.com/citations?user=6VUE01AAAAAJ&hl=en">Google Scholar</a>
+                <a href="https://supriyakrishnan.medium.com/">Medium</a>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
     </div>
   </section>
 
 </main>
 
-<!-- ===== CONTACT ===== -->
-<section class="contact wrap" id="contact">
-  <div class="section-label">
-    <span><span class="num">05 ·</span>&nbsp;&nbsp;Contact</span>
-  <!--  <span>Open to roles &amp; collaborations</span> -->
-  </div>
-  <div class="contact-grid">
-    <div>
- <!--     <h2>Let's <em>talk.</em></h2> -->
-      <a href="mailto:supriya.urban@gmail.com" class="email-link">supriya.urban@gmail.com</a>
-    </div>
-    <div class="contact-aside">
-      <a href="https://www.linkedin.com/in/supriya-krishnan-22704319/">LinkedIn</a>
-      <a href="https://scholar.google.com/citations?user=6VUE01AAAAAJ&hl=en">Google Scholar</a>
-      <a href="https://supriyakrishnan.medium.com/">Medium</a>
+<footer>
+  <div class="wrap">
+    <div class="footer-inner">
+      <span>© 2026 Supriya Krishnan</span>
+      <span>Last updated · May 2026</span>
     </div>
   </div>
-</section>
-
-<footer class="wrap">
-  <span>© 2026 Supriya Krishnan</span>
-  <span>Self-hosted · open source</span>
 </footer>
-
-<script>
-  // Add subtle border to topbar once scrolled
-  const top = document.getElementById('topbar');
-  const onScroll = () => top.classList.toggle('scrolled', window.scrollY > 12);
-  window.addEventListener('scroll', onScroll, { passive: true });
-  onScroll();
-</script>
 
 </body>
 </html>
