@@ -8,7 +8,7 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,300..900,0..100,0..1;1,9..144,300..900,0..100,0..1&family=IBM+Plex+Sans:wght@300;400;500&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,300..900,0..100,0..1;1,9..144,300..900,0..100,0..1&family=Geist:wght@100..900&family=Geist+Mono:wght@100..900&display=swap" rel="stylesheet">
 
 <style>
 :root {
@@ -22,8 +22,8 @@
   --rule:     #d8d2c3;
 
   --serif: "Fraunces", Georgia, serif;
-  --sans:  "IBM Plex Sans", system-ui, sans-serif;
-  --mono:  "JetBrains Mono", ui-monospace, monospace;
+  --sans:  "Geist", system-ui, sans-serif;
+  --mono:  "Geist Mono", ui-monospace, monospace;
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -85,14 +85,6 @@ a { color: inherit; text-decoration: none; }
   font-variation-settings: "opsz" 14;
   color: var(--ink);
 }
-.mark .mono-affil {
-  font-family: var(--mono);
-  font-size: 10.5px;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: var(--ink-mute);
-  margin-left: 8px;
-}
 nav.menu {
   display: flex;
   gap: 26px;
@@ -111,7 +103,7 @@ main {
   flex-direction: column;
 }
 
-/* ===== Hero (sober, CV-like) ===== */
+/* ===== Hero ===== */
 .hero {
   padding: 50px 0 40px;
   position: relative;
@@ -125,24 +117,6 @@ main {
 }
 .hero-left { min-width: 0; }
 
-.role-line {
-  font-family: var(--mono);
-  font-size: 11px;
-  text-transform: uppercase;
-  letter-spacing: 0.18em;
-  color: var(--ink-mute);
-  margin-bottom: 26px;
-  display: flex;
-  align-items: center;
-  gap: 14px;
-}
-.role-line::before {
-  content: "";
-  width: 28px;
-  height: 1px;
-  background: var(--ochre);
-}
-
 h1.name {
   font-family: var(--serif);
   font-weight: 350;
@@ -151,19 +125,7 @@ h1.name {
   letter-spacing: -0.025em;
   font-variation-settings: "opsz" 144, "SOFT" 20;
   color: var(--ink);
-  margin-bottom: 12px;
-}
-
-.role-sub {
-  font-family: var(--serif);
-  font-style: italic;
-  font-weight: 350;
-  font-size: clamp(18px, 1.55vw, 22px);
-  line-height: 1.3;
-  color: var(--accent);
-  font-variation-settings: "opsz" 24, "WONK" 1;
-  margin-bottom: 26px;
-  max-width: 30ch;
+  margin-bottom: 20px;
 }
 
 .research-statement {
@@ -171,7 +133,7 @@ h1.name {
   font-weight: 350;
   font-size: 16px;
   line-height: 1.55;
-  max-width: 56ch;
+  max-width: 60ch;
   color: var(--ink-soft);
   font-variation-settings: "opsz" 20;
   margin-bottom: 18px;
@@ -203,6 +165,23 @@ h1.name {
   border-bottom: 1px solid var(--accent);
   padding-bottom: 1px;
 }
+
+.socials {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--ink-soft);
+  margin-top: 14px;
+}
+.socials a {
+  border-bottom: 1px solid var(--rule);
+  padding-bottom: 1px;
+  transition: border-color 0.2s, color 0.2s;
+}
+.socials a:hover { border-bottom-color: var(--accent); color: var(--accent); }
+.socials a::after { content: " ↗"; opacity: 0.5; }
 
 /* Hero aside — CV summary */
 .hero-aside {
@@ -245,15 +224,16 @@ h1.name {
 .horizon path { fill: none; stroke: var(--accent); stroke-width: 0.9; }
 .horizon path:nth-child(2) { stroke: var(--ochre); opacity: 0.6; }
 
-/* ===== Info grid ===== */
+/* ===== Info grid — 2 columns ===== */
 .info {
   padding: 38px 0 50px;
   flex: 1;
 }
 .info-grid {
   display: grid;
-  grid-template-columns: 1.15fr 1fr 1fr;
-  gap: 56px;
+  grid-template-columns: 1.5fr 1fr;
+  gap: 64px;
+  align-items: start;
 }
 .col-head {
   font-family: var(--mono);
@@ -270,15 +250,16 @@ h1.name {
 }
 .col-head .num { color: var(--ochre); }
 
-/* Research column */
+/* Research column (left, wider) */
 .col-research p {
   font-family: var(--serif);
   font-weight: 350;
-  font-size: 14.5px;
-  line-height: 1.6;
+  font-size: 15.5px;
+  line-height: 1.65;
   color: var(--ink);
   font-variation-settings: "opsz" 18;
-  margin-bottom: 0.9em;
+  margin-bottom: 1em;
+  max-width: 70ch;
 }
 .col-research p a {
   border-bottom: 1px solid var(--rule);
@@ -288,8 +269,8 @@ h1.name {
 .col-research p em { font-style: italic; }
 
 .themes-block {
-  margin-top: 20px;
-  padding-top: 18px;
+  margin-top: 28px;
+  padding-top: 22px;
   border-top: 1px dashed var(--rule);
 }
 .themes-label {
@@ -298,12 +279,12 @@ h1.name {
   text-transform: uppercase;
   letter-spacing: 0.15em;
   color: var(--ink-mute);
-  margin-bottom: 12px;
+  margin-bottom: 14px;
 }
 .themes {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  gap: 16px;
+  gap: 20px;
 }
 .theme {
   font-family: var(--mono);
@@ -325,7 +306,14 @@ h1.name {
   font-variation-settings: "opsz" 18;
 }
 
-/* Publications column */
+/* Right column wrapper: publications above, news below */
+.col-right {
+  display: flex;
+  flex-direction: column;
+  gap: 44px;
+}
+
+/* Publications */
 .pub-list { }
 .pub-item {
   display: grid;
@@ -368,9 +356,8 @@ h1.name {
   letter-spacing: 0.04em;
 }
 
-/* News + Contact column */
-.col-now-connect { display: flex; flex-direction: column; }
-
+/* News */
+.news-list {}
 .news-item {
   font-family: var(--serif);
   font-size: 13.5px;
@@ -398,39 +385,51 @@ h1.name {
 .news-item a:hover { border-bottom-color: var(--accent); color: var(--accent); }
 .news-item em { font-style: italic; color: var(--ink-soft); }
 
-.contact-block {
-  margin-top: 28px;
-  padding-top: 22px;
-  border-top: 1px solid var(--rule);
+/* LinkedIn embed */
+.linkedin-embed {
+  margin: 16px 0;
+  border: 1px solid var(--rule);
+  background: #fff;
+  border-radius: 4px;
+  overflow: hidden;
 }
-.contact-block .col-head { margin-bottom: 14px; }
-.contact-email {
-  font-family: var(--serif);
-  font-size: 17px;
-  color: var(--accent);
-  border-bottom: 1px solid var(--accent);
-  padding-bottom: 2px;
-  font-variation-settings: "opsz" 20;
-  display: inline-block;
-  margin-bottom: 16px;
-  transition: opacity 0.2s;
-}
-.contact-email:hover { opacity: 0.7; }
-.socials {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 14px;
+.linkedin-label {
   font-family: var(--mono);
-  font-size: 11px;
-  color: var(--ink-soft);
-}
-.socials a {
+  font-size: 9.5px;
+  color: var(--ink-mute);
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  padding: 9px 12px;
   border-bottom: 1px solid var(--rule);
-  padding-bottom: 1px;
-  transition: border-color 0.2s, color 0.2s;
+  background: var(--paper-2);
+  display: flex;
+  align-items: center;
+  gap: 6px;
 }
-.socials a:hover { border-bottom-color: var(--accent); color: var(--accent); }
-.socials a::after { content: " ↗"; opacity: 0.5; }
+.linkedin-label::before {
+  content: "in";
+  display: inline-block;
+  width: 14px; height: 14px;
+  background: #0a66c2;
+  color: #fff;
+  font-family: var(--sans);
+  font-weight: 600;
+  font-size: 10px;
+  text-align: center;
+  line-height: 14px;
+  border-radius: 2px;
+  text-transform: lowercase;
+  letter-spacing: 0;
+}
+.linkedin-embed iframe {
+  width: 100%;
+  max-width: 504px;
+  height: 540px;
+  display: block;
+  border: 0;
+  margin: 0 auto;
+  background: #fff;
+}
 
 footer {
   padding: 18px 0 22px;
@@ -448,9 +447,8 @@ footer {
 
 /* ===== Responsive ===== */
 @media (max-width: 1080px) {
-  .info-grid { grid-template-columns: 1fr 1fr; gap: 44px; }
-  .col-now-connect { grid-column: 1 / -1; }
-  .col-now-connect-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 44px; }
+  .info-grid { grid-template-columns: 1fr; gap: 44px; }
+  .col-research p { max-width: 100%; }
 }
 @media (max-width: 820px) {
   .horizon { display: none; }
@@ -458,16 +456,14 @@ footer {
   .hero-grid { grid-template-columns: 1fr; gap: 28px; }
   .hero-aside { border-left: none; padding-left: 0; border-top: 1px solid var(--rule); padding-top: 22px; }
   .hero-aside dl { display: grid; grid-template-columns: 1fr 1fr; gap: 12px 24px; }
-  .info-grid { grid-template-columns: 1fr; gap: 32px; }
-  .col-now-connect-inner { grid-template-columns: 1fr; gap: 32px; }
   .themes { grid-template-columns: 1fr; }
 }
 @media (max-width: 520px) {
   .wrap { padding: 0 22px; }
   nav.menu { gap: 14px; font-size: 11px; }
   nav.menu a:nth-child(n+5) { display: none; }
-  .mark .mono-affil { display: none; }
   h1.name { font-size: 38px; }
+  .linkedin-embed iframe { height: 480px; }
 }
 
 .reveal { opacity: 0; transform: translateY(8px); animation: rise 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
@@ -482,7 +478,7 @@ footer {
 
 <header class="topbar">
   <div class="wrap topbar-inner">
-    <a href="index.html" class="mark"> Krishnan</a>
+    <a href="index.html" class="mark">Supriya Krishnan</a>
     <nav class="menu">
       <a href="projects.html">projects</a>
       <a href="publications.html">publications</a>
@@ -506,49 +502,48 @@ footer {
 
       <div class="hero-grid">
         <div class="hero-left">
-      <!--    <div class="role-line reveal">Researcher · Urban planning &amp; climate adaptation</div> -->
-
-            <h1 class="name reveal d12">Supriya Krishnan.</h1> 
-    <!--       <p class="role-sub reveal d1"></p> -->
+          <h1 class="name reveal d1">Supriya Krishnan.</h1>
 
           <p class="research-statement reveal d2">
-            Urban planner &amp; Urban planner & architect, analysing physical climate risk in cities and how it shapes long-term growth and investment decisions. PhD from  <a href="https://www.tudelft.nl">TU Delft's</a> Faculty of Technology Policy and Management focusing on planning under deep uncertainty, with advisory and knowledge support to <a href="https://www.undrr.org/">UN</a>, intergovernmental, and government bodies — UNDRR, the <a href="https://www.cdri.world/">CDRI</a>, <a href="https://cudrr.org/">CUDRR&R</a>, India's <a href="https://ndma.gov.in/">NDMA</a>, and the the <a href="https://www.nipfp.org.in/">NIPFP</a>
+            Urban planner &amp; architect, analysing physical climate risk in cities and how it shapes long-term growth and investment decisions. PhD from <a href="https://www.tudelft.nl">TU Delft's</a> Faculty of Technology, Policy &amp; Management focusing on planning under deep uncertainty, with advisory and knowledge support to UN, intergovernmental, and government bodies — <a href="https://www.undrr.org/">UNDRR</a>, the <a href="https://www.cdri.world/">CDRI</a>, <a href="https://cudrr.org/">CUDRR&amp;R</a>, India's <a href="https://ndma.gov.in/">NDMA</a>, and the <a href="https://www.nipfp.org.in/">NIPFP</a>.
           </p>
 
           <div class="status-line reveal d3">
             <span class="marker"></span>
             <span>Open to research &amp; policy positions, 2026 &nbsp;·&nbsp; <a href="mailto:supriya.urban@gmail.com">supriya.urban@gmail.com</a></span>
           </div>
-           <div class="socials">
-                <a href="https://www.linkedin.com/in/supriya-krishnan-22704319/">LinkedIn</a>
-                <a href="https://scholar.google.com/citations?user=6VUE01AAAAAJ&hl=en">Google Scholar</a>
-                <a href="https://supriyakrishnan.medium.com/">Medium</a>
-              </div>
+
+          <div class="socials reveal d3">
+            <a href="https://www.linkedin.com/in/supriya-krishnan-22704319/">LinkedIn</a>
+            <a href="https://scholar.google.com/citations?user=6VUE01AAAAAJ&hl=en">Google Scholar</a>
+            <a href="https://supriyakrishnan.medium.com/">Medium</a>
+          </div>
         </div>
 
         <aside class="hero-aside reveal d4">
           <div class="aside-label">Profile</div>
           <dl>
-          <!--  <div><dt>Based</dt><dd>Providence / Boston, US</dd></div> -->
             <div><dt>PhD</dt><dd>TU Delft · 2026</dd></div>
             <div><dt>Recognition</dt><dd>Allianz Climate Risk Award, 2024</dd></div>
             <div><dt>Fellowships</dt><dd>C40 Women4Climate</dd><dd>TU Delft Global Fellow</dd><dd>CDRI Fellowship</dd></div>
-          
           </dl>
         </aside>
       </div>
     </div>
   </section>
 
-  <!-- ===== INFO GRID ===== -->
+  <!-- ===== INFO GRID (2-column) ===== -->
   <section class="info">
     <div class="wrap">
       <div class="info-grid">
 
-        <!-- Research column -->
+        <!-- LEFT: Research description (wider) -->
         <div class="col-research">
-       <!--    <h2 class="col-head"><span><span class="num">01 ·</span>&nbsp;&nbsp;Research</span><span>Themes &amp; methods</span></h2> -->
-          <p>The aim of my work is to help cities make long-horizon planning decisions under climate uncertainty — when the data is incomplete, the future is non-stationary, and the institutions deciding are operating on timelines fundamentally misaligned with the systems they govern. In the next twenty years, every major metropolitan region will face climate impacts — coastal inundation, pluvial and fluvial flooding, extreme heat — whose magnitudes and frequencies sit outside the historical record their planning systems were built on. As these impacts intensify, it is critical to develop methods that let planners and policymakers act on imperfect physical-risk data without waiting for certainty that may never come. My work develops decision-grade methodologies for that translation — scenario architectures that operate inside formal planning timeframes, land-use simulations under deep uncertainty, and comparative frameworks that move between data-rich and data-poor governance regimes. I apply scenario modelling, robust decision-making, stochastic land-use simulation, and design-thinking methods to develop planning tools that decision-makers can actually use. I completed my PhD at TU Delft in 2026, where I developed methodologies for adaptive urban planning across the Metropolitan Region of Amsterdam and the Mumbai Metropolitan Region. Before that, I helped set up the Coalition for Disaster Resilient Infrastructure at UNDRR — a multilateral mechanism launched at the 2019 UN Climate Action Summit. I have published in npj Urban Sustainability, Cities, and Environment & Planning B. I received the Allianz Climate Risk Research Award in 2024 and was named a C40 Women4Climate Fellow in 2022.</p>
+          <p>The aim of my work is to help cities make long-horizon planning decisions under climate uncertainty — when the data is incomplete, the future is non-stationary, and the institutions deciding are operating on timelines fundamentally misaligned with the systems they govern. In the next twenty years, every major metropolitan region will face climate impacts — coastal inundation, pluvial and fluvial flooding, extreme heat — whose magnitudes and frequencies sit outside the historical record their planning systems were built on. As these impacts intensify, it is critical to develop methods that let planners and policymakers act on imperfect physical-risk data without waiting for certainty that may never come.</p>
+
+          <p>My work develops decision-grade methodologies for that translation — scenario architectures that operate inside formal planning timeframes, land-use simulations under deep uncertainty, and comparative frameworks that move between data-rich and data-poor governance regimes. I apply scenario modelling, robust decision-making, stochastic land-use simulation, and design-thinking methods to develop planning tools that decision-makers can actually use.</p>
+
+          <p>I completed my PhD at TU Delft in 2026, where I developed methodologies for adaptive urban planning across the Metropolitan Region of Amsterdam and the Mumbai Metropolitan Region. Before that, I helped set up the <a href="https://www.cdri.world/">Coalition for Disaster Resilient Infrastructure</a> at <a href="https://www.undrr.org/">UNDRR</a> — a multilateral mechanism launched at the 2019 UN Climate Action Summit. I have published in <em>npj Urban Sustainability</em>, <em>Cities</em>, and <em>Environment &amp; Planning B</em>. I received the Allianz Climate Risk Research Award in 2024 and was named a C40 Women4Climate Fellow in 2022.</p>
 
           <div class="themes-block">
             <div class="themes-label">Research themes</div>
@@ -560,93 +555,101 @@ footer {
           </div>
         </div>
 
-       <!-- Publications column -->
-<div class="col-pub">
-  <h2 class="col-head"><span><span class="num">02 ·</span>&nbsp;&nbsp;Selected Publications &amp; Work</span><span></span></h2>
-  <div class="pub-list">
+        <!-- RIGHT: Publications above, News below -->
+        <div class="col-right">
 
-    <div class="pub-item">
-      <span class="year">2026</span>
-      <a href="https://theprint.in/opinion/heat-stress-temperature-india/2929421/" class="title">Heat Stress is Not a Temperature<em>— Scroll</em></a>
-    </div>
+          <!-- Publications -->
+          <div class="col-pub">
+            <h2 class="col-head"><span><span class="num">02 ·</span>&nbsp;&nbsp;Selected Publications &amp; Work</span><span></span></h2>
+            <div class="pub-list">
 
-    <div class="pub-item">
-      <span class="year">2025</span>
-      <a href="https://gis.harvard.edu/event/2025-cga-conference" class="title">Talk · The Geography of Digital Twins <em>— Harvard CGA</em></a>
-    </div>
-
-    <div class="pub-item">
-      <span class="year">2024</span>
-      <a href="https://gis.harvard.edu/event/2025-cga-conference" class="title">Talk · Data-rich vs. Data-poor? Developing Land-Use Models for Urban Resilience, International Workshop on Climate-Resilient Development in Southeast Asia <em>— Harvard Salata Institute</em></a>
-    </div>
-    
-    <div class="pub-item">
-      <span class="year">YEAR</span>
-      <a href="#" class="title">Talk · [topic] <em>— Columbia University</em></a>
-    </div>
-    
-    <div class="pub-item">
-      <span class="year">2024</span>
-      <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4106195" class="title">FutureScapes: Blending computational models &amp; scenario narratives to design urban futures <em>— EPB: Urban Analytics &amp; City Science</em></a>
-    </div>
-    
-    <div class="pub-item">
-      <span class="year">2025</span>
-      <a href="https://g20drrwg.preventionweb.net/2024/g20-documents" class="title">G20 Recovery Readiness Assessment Framework <em>— G20 Declaration on Disaster Risk Reduction</em></a>
-    </div>
-    
-    <div class="pub-item">
-      <span class="year">2024</span>
-      <a href="https://www.nature.com/articles/s42949-024-00140-5" class="title">TIMEWISE: Temporal dynamics for urban resilience <em>— npj Urban Sustainability</em></a>
-    </div>
-    
-    <div class="pub-item">
-      <span class="year">2022</span>
-      <a href="https://scroll.in/article/1036980" class="title">Bridge collapses, infrastructure age &amp; risk in India <em>— Scroll</em></a>
-    </div>
-    
-    
-  </div>
-  <a href="publications.html" class="col-link">All publications →</a>
-</div>
-        
-        <!-- News + Contact column -->
-        <div class="col-now-connect">
-          <div class="col-now-connect-inner">
-
-            <div>
-              <h2 class="col-head"><span><span class="num">03 ·</span>&nbsp;&nbsp;News</span><span></span></h2>
-              <div class="news-list">
-                <div class="news-item">
-                  <span class="news-date">Mar 2026</span>
-                  <span>PhD defended at TU Delft.</span>
-                </div>
-                <div class="news-item">
-                  <span class="news-date">2025</span>
-                  <span>Speaking on open geospatial trends at <em>Cesium Developer Summit</em>.</span>
-                </div>
-                <div class="news-item">
-                  <span class="news-date">2025</span>
-                  <span>Presenting at <em>Harvard CGA — Geography of Digital Twins</em>.</span>
-                </div>
-                <div class="news-item">
-                  <span class="news-date">2025</span>
-                  <span>At ESRI UC &amp; USGIF GEOINT — San Diego &amp; St Louis.</span>
-                </div>
-                <div class="news-item">
-                  <span class="news-date">2024</span>
-                  <span>Op-ed for The Print:<a href="https://theprint.in/opinion/heat-stress-temperature-india/2929421/">Heat stress is not a temperature. India needs to learn that</a>.</span>
-                </div>
+              <div class="pub-item">
+                <span class="year">2026</span>
+                <a href="https://theprint.in/opinion/heat-stress-temperature-india/2929421/" class="title">Heat Stress is Not a Temperature <em>— The Print</em></a>
               </div>
-            </div>
 
-            <div class="contact-block" style="margin-top:0;padding-top:0;border-top:none">
-           <!--   <h2 class="col-head"><span><span class="num">04 ·</span>&nbsp;&nbsp;Contact</span><span>Direct</span></h2> -->
-        <!--      <a href="mailto:supriya.urban@gmail.com" class="contact-email">supriya.urban@gmail.com</a> -->
-             
-            </div>
+              <div class="pub-item">
+                <span class="year">2024</span>
+                <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4106195" class="title">FutureScapes: Blending computational models &amp; scenario narratives to design urban futures <em>— EPB: Urban Analytics &amp; City Science</em></a>
+              </div>
 
+              <div class="pub-item">
+                <span class="year">2025</span>
+                <a href="https://g20drrwg.preventionweb.net/2024/g20-documents" class="title">G20 Recovery Readiness Assessment Framework <em>— G20 Declaration on Disaster Risk Reduction</em></a>
+              </div>
+
+              <div class="pub-item">
+                <span class="year">2024</span>
+                <a href="https://www.nature.com/articles/s42949-024-00140-5" class="title">TIMEWISE: Temporal dynamics for urban resilience <em>— npj Urban Sustainability</em></a>
+              </div>
+
+              <div class="pub-item">
+                <span class="year">2024</span>
+                <a href="#" class="title">Talk · Data-rich vs. Data-poor? Developing Land-Use Models for Urban Resilience <em>— Harvard Salata Institute</em></a>
+              </div>
+
+              <div class="pub-item">
+                <span class="year">YEAR</span>
+                <a href="#" class="title">Talk · [topic] <em>— Columbia University</em></a>
+              </div>
+
+            </div>
+            <a href="publications.html" class="col-link">All publications →</a>
           </div>
+
+          <!-- News -->
+          <div class="col-news">
+            <h2 class="col-head"><span><span class="num">03 ·</span>&nbsp;&nbsp;News</span><span></span></h2>
+            <div class="news-list">
+
+              <div class="news-item">
+                <span class="news-date">Mar 2026</span>
+                <span>PhD defended at TU Delft.</span>
+              </div>
+
+              <div class="news-item">
+                <span class="news-date">2025</span>
+                <span>Speaking on open geospatial trends at <em>Cesium Developer Summit</em>.</span>
+              </div>
+
+              <!--
+                ===== HOW TO EMBED A LINKEDIN POST =====
+                1. Open the LinkedIn post in your browser
+                2. Click the "..." menu on the top-right of the post
+                3. Select "Embed this post"
+                4. Copy the <iframe> code LinkedIn gives you
+                5. Paste it inside the .linkedin-embed div below, replacing the placeholder iframe
+                6. Duplicate the whole .linkedin-embed block for each additional post
+              -->
+              <div class="linkedin-embed">
+                <div class="linkedin-label">From LinkedIn</div>
+                <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:REPLACE_WITH_POST_ID" height="540" width="504" frameborder="0" allowfullscreen="" title="Embedded LinkedIn post"></iframe>
+              </div>
+
+              <div class="news-item">
+                <span class="news-date">2025</span>
+                <span>Presenting at <em>Harvard CGA — Geography of Digital Twins</em>.</span>
+              </div>
+
+              <div class="news-item">
+                <span class="news-date">2025</span>
+                <span>At ESRI UC &amp; USGIF GEOINT — San Diego &amp; St Louis.</span>
+              </div>
+
+              <!-- Second LinkedIn embed slot — duplicate or remove as needed -->
+              <div class="linkedin-embed">
+                <div class="linkedin-label">From LinkedIn</div>
+                <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:REPLACE_WITH_POST_ID" height="540" width="504" frameborder="0" allowfullscreen="" title="Embedded LinkedIn post"></iframe>
+              </div>
+
+              <div class="news-item">
+                <span class="news-date">2024</span>
+                <span>Op-ed for The Print: <a href="https://theprint.in/opinion/heat-stress-temperature-india/2929421/">Heat stress is not a temperature</a>.</span>
+              </div>
+
+            </div>
+          </div>
+
         </div>
 
       </div>
