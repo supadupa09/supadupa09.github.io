@@ -8,7 +8,7 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,300..900,0..100,0..1;1,9..144,300..900,0..100,0..1&family=Geist:wght@100..900&family=Geist+Mono:wght@100..900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&family=Geist+Mono:wght@100..900&display=swap" rel="stylesheet">
 
 <style>
 :root {
@@ -21,9 +21,10 @@
   --ochre:    #a06b3a;
   --rule:     #d8d2c3;
 
-  --serif: "Fraunces", Georgia, serif;
-  --sans:  "Geist", system-ui, sans-serif;
-  --mono:  "Geist Mono", ui-monospace, monospace;
+  /* All Geist now */
+  --serif: "Geist", system-ui, -apple-system, sans-serif;
+  --sans:  "Geist", system-ui, -apple-system, sans-serif;
+  --mono:  "Geist Mono", ui-monospace, SFMono-Regular, monospace;
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -40,6 +41,13 @@ body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+}
+
+/* Geist has no italic — use weight + color instead */
+em {
+  font-style: normal;
+  font-weight: 500;
+  color: var(--ink-soft);
 }
 
 body::before {
@@ -78,11 +86,10 @@ a { color: inherit; text-decoration: none; }
   padding: 16px 0;
 }
 .mark {
-  font-family: var(--serif);
-  font-weight: 400;
-  font-size: 16px;
+  font-family: var(--sans);
+  font-weight: 500;
+  font-size: 15.5px;
   letter-spacing: -0.01em;
-  font-variation-settings: "opsz" 14;
   color: var(--ink);
 }
 nav.menu {
@@ -118,27 +125,26 @@ main {
 .hero-left { min-width: 0; }
 
 h1.name {
-  font-family: var(--serif);
-  font-weight: 350;
+  font-family: var(--sans);
+  font-weight: 500;
   font-size: clamp(40px, 5vw, 60px);
   line-height: 1.0;
-  letter-spacing: -0.025em;
-  font-variation-settings: "opsz" 144, "SOFT" 20;
+  letter-spacing: -0.035em;
   color: var(--ink);
   margin-bottom: 20px;
 }
 
 .research-statement {
-  font-family: var(--serif);
-  font-weight: 350;
+  font-family: var(--sans);
+  font-weight: 400;
   font-size: 16px;
   line-height: 1.55;
-  max-width: 60ch;
+  max-width: 62ch;
   color: var(--ink-soft);
-  font-variation-settings: "opsz" 20;
   margin-bottom: 18px;
 }
 .research-statement a {
+  color: var(--ink);
   border-bottom: 1px solid var(--rule);
   transition: border-color 0.2s, color 0.2s;
 }
@@ -241,7 +247,7 @@ h1.name {
   text-transform: uppercase;
   letter-spacing: 0.2em;
   color: var(--ink-mute);
-  margin-bottom: 20px;
+  margin-bottom: 22px;
   padding-bottom: 10px;
   border-bottom: 1px solid var(--rule);
   display: flex;
@@ -250,14 +256,13 @@ h1.name {
 }
 .col-head .num { color: var(--ochre); }
 
-/* Research column (left, wider) */
+/* Research column */
 .col-research p {
-  font-family: var(--serif);
-  font-weight: 350;
+  font-family: var(--sans);
+  font-weight: 400;
   font-size: 15.5px;
   line-height: 1.65;
   color: var(--ink);
-  font-variation-settings: "opsz" 18;
   margin-bottom: 1em;
   max-width: 70ch;
 }
@@ -266,7 +271,6 @@ h1.name {
   transition: border-color 0.2s, color 0.2s;
 }
 .col-research p a:hover { border-bottom-color: var(--accent); color: var(--accent); }
-.col-research p em { font-style: italic; }
 
 .themes-block {
   margin-top: 28px;
@@ -296,58 +300,123 @@ h1.name {
 }
 .theme strong {
   display: block;
-  font-family: var(--serif);
-  font-weight: 400;
+  font-family: var(--sans);
+  font-weight: 500;
   font-size: 13.5px;
   letter-spacing: -0.005em;
   color: var(--ink);
   text-transform: none;
   margin-bottom: 4px;
-  font-variation-settings: "opsz" 18;
 }
 
-/* Right column wrapper: publications above, news below */
+/* Right column wrapper */
 .col-right {
   display: flex;
   flex-direction: column;
   gap: 44px;
 }
 
-/* Publications */
-.pub-list { }
-.pub-item {
+/* ===== Academic-style publication cards ===== */
+.pub-card {
   display: grid;
-  grid-template-columns: 44px 1fr;
-  gap: 14px;
-  padding: 11px 0;
+  grid-template-columns: 110px 1fr;
+  gap: 16px;
+  padding: 18px 0;
   border-bottom: 1px solid var(--rule);
-  align-items: baseline;
+  align-items: start;
   transition: padding 0.25s, background 0.25s;
 }
-.pub-item:first-child { padding-top: 0; }
-.pub-item:hover { padding-left: 8px; background: linear-gradient(90deg, var(--paper-2), transparent 70%); }
-.pub-item .year {
+.pub-card:first-of-type { padding-top: 0; }
+.pub-card:hover { padding-left: 6px; background: linear-gradient(90deg, var(--paper-2), transparent 80%); }
+
+.pub-thumb {
+  width: 110px;
+  aspect-ratio: 4 / 3;
+  background: var(--paper-2);
+  border: 1px solid var(--rule);
+  overflow: hidden;
+  position: relative;
+  display: block;
+}
+.pub-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+/* Placeholder pattern when no image yet */
+.pub-thumb.placeholder {
+  background:
+    linear-gradient(135deg, rgba(45,85,102,0.08) 0%, rgba(45,85,102,0.02) 50%, rgba(160,107,58,0.06) 100%),
+    var(--paper-2);
+}
+.pub-thumb.placeholder::after {
+  content: attr(data-tag);
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
   font-family: var(--mono);
-  font-size: 11px;
+  font-size: 9px;
   color: var(--ink-mute);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
 }
-.pub-item .title {
-  font-family: var(--serif);
+
+.pub-body { min-width: 0; }
+.pub-title {
+  font-family: var(--sans);
+  font-weight: 500;
   font-size: 14px;
+  line-height: 1.32;
+  letter-spacing: -0.005em;
+  margin-bottom: 6px;
+  color: var(--ink);
+}
+.pub-title a { transition: color 0.2s; }
+.pub-title a:hover { color: var(--accent); }
+.pub-authors {
+  font-family: var(--sans);
+  font-size: 11.5px;
   line-height: 1.4;
-  font-variation-settings: "opsz" 16;
-  transition: color 0.2s;
+  color: var(--ink-mute);
+  margin-bottom: 4px;
 }
-.pub-item .title em {
+.pub-authors strong {
   color: var(--ink-soft);
-  font-style: italic;
-  font-size: 0.93em;
+  font-weight: 500;
 }
-.pub-item:hover a.title { color: var(--accent); }
+.pub-venue {
+  font-family: var(--sans);
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--accent);
+  margin-bottom: 8px;
+  letter-spacing: 0.005em;
+}
+.pub-actions {
+  display: flex;
+  gap: 12px;
+  font-family: var(--mono);
+  font-size: 10.5px;
+  letter-spacing: 0.02em;
+  flex-wrap: wrap;
+}
+.pub-actions a {
+  color: var(--ink-soft);
+  border-bottom: 1px solid var(--rule);
+  padding-bottom: 1px;
+  transition: color 0.2s, border-color 0.2s;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+.pub-actions a:hover { color: var(--accent); border-bottom-color: var(--accent); }
+.pub-actions a .icon {
+  display: inline-block;
+  width: 10px; height: 10px;
+  position: relative;
+  top: 1px;
+}
+.pub-actions a .icon svg { width: 100%; height: 100%; fill: currentColor; }
 
 .col-link {
   display: inline-block;
-  margin-top: 16px;
+  margin-top: 18px;
   font-family: var(--mono);
   font-size: 11px;
   color: var(--accent);
@@ -359,9 +428,8 @@ h1.name {
 /* News */
 .news-list {}
 .news-item {
-  font-family: var(--serif);
+  font-family: var(--sans);
   font-size: 13.5px;
-  font-variation-settings: "opsz" 16;
   line-height: 1.5;
   color: var(--ink);
   display: grid;
@@ -383,7 +451,6 @@ h1.name {
   transition: border-color 0.2s, color 0.2s;
 }
 .news-item a:hover { border-bottom-color: var(--accent); color: var(--accent); }
-.news-item em { font-style: italic; color: var(--ink-soft); }
 
 /* LinkedIn embed */
 .linkedin-embed {
@@ -421,10 +488,9 @@ h1.name {
   text-transform: lowercase;
   letter-spacing: 0;
 }
-.linkedin-embed <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7465087926670913536?collapsed=1" height="593" width="504" frameborder="0" allowfullscreen="" title="Embedded post"></iframe> {
+.linkedin-embed iframe {
   width: 100%;
   max-width: 504px;
-  height: 540px;
   display: block;
   border: 0;
   margin: 0 auto;
@@ -458,12 +524,13 @@ footer {
   .hero-aside dl { display: grid; grid-template-columns: 1fr 1fr; gap: 12px 24px; }
   .themes { grid-template-columns: 1fr; }
 }
-@media (max-width: 520px) {
+@media (max-width: 560px) {
   .wrap { padding: 0 22px; }
   nav.menu { gap: 14px; font-size: 11px; }
   nav.menu a:nth-child(n+5) { display: none; }
   h1.name { font-size: 38px; }
-  .linkedin-embed iframe { height: 480px; }
+  .pub-card { grid-template-columns: 84px 1fr; gap: 12px; }
+  .pub-thumb { width: 84px; }
 }
 
 .reveal { opacity: 0; transform: translateY(8px); animation: rise 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
@@ -532,12 +599,12 @@ footer {
     </div>
   </section>
 
-  <!-- ===== INFO GRID (2-column) ===== -->
+  <!-- ===== INFO GRID ===== -->
   <section class="info">
     <div class="wrap">
       <div class="info-grid">
 
-        <!-- LEFT: Research description (wider) -->
+        <!-- LEFT: Research description -->
         <div class="col-research">
           <p>The aim of my work is to help cities make long-horizon planning decisions under climate uncertainty — when the data is incomplete, the future is non-stationary, and the institutions deciding are operating on timelines fundamentally misaligned with the systems they govern. In the next twenty years, every major metropolitan region will face climate impacts — coastal inundation, pluvial and fluvial flooding, extreme heat — whose magnitudes and frequencies sit outside the historical record their planning systems were built on. As these impacts intensify, it is critical to develop methods that let planners and policymakers act on imperfect physical-risk data without waiting for certainty that may never come.</p>
 
@@ -558,42 +625,112 @@ footer {
         <!-- RIGHT: Publications above, News below -->
         <div class="col-right">
 
-          <!-- Publications -->
+          <!-- ===== Publications (academic style) ===== -->
           <div class="col-pub">
             <h2 class="col-head"><span><span class="num">02 ·</span>&nbsp;&nbsp;Selected Publications &amp; Work</span><span></span></h2>
-            <div class="pub-list">
 
-              <div class="pub-item">
-                <span class="year">2026</span>
-                <a href="https://theprint.in/opinion/heat-stress-temperature-india/2929421/" class="title">Heat Stress is Not a Temperature <em>— The Print</em></a>
+            <!--
+              ===== HOW TO ADD A REAL THUMBNAIL =====
+              Each .pub-thumb has class="placeholder" with a data-tag showing what it represents.
+              To add a real image:
+                1. Drop your image into /images/ folder (e.g. images/timewise-thumb.jpg)
+                2. Replace the empty <div class="pub-thumb placeholder" data-tag="..."> with:
+                   <a href="paper-url" class="pub-thumb">
+                     <img src="images/timewise-thumb.jpg" alt="">
+                   </a>
+                3. Recommended size: 400×300px (4:3), under 100 KB
+            -->
+
+            <!-- Heat Stress is Not a Temperature -->
+            <article class="pub-card">
+              <a href="https://theprint.in/opinion/heat-stress-temperature-india/2929421/" class="pub-thumb placeholder" data-tag="Op-ed"></a>
+              <div class="pub-body">
+                <h3 class="pub-title">
+                  <a href="https://theprint.in/opinion/heat-stress-temperature-india/2929421/">Heat Stress is Not a Temperature</a>
+                </h3>
+                <div class="pub-authors"><strong>Supriya Krishnan</strong></div>
+                <div class="pub-venue">The Print · 2026</div>
+                <div class="pub-actions">
+                  <a href="https://theprint.in/opinion/heat-stress-temperature-india/2929421/">→ Read</a>
+                </div>
               </div>
+            </article>
 
-              <div class="pub-item">
-                <span class="year">2024</span>
-                <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4106195" class="title">FutureScapes: Blending computational models &amp; scenario narratives to design urban futures <em>— EPB: Urban Analytics &amp; City Science</em></a>
+            <!-- FutureScapes -->
+            <article class="pub-card">
+              <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4106195" class="pub-thumb placeholder" data-tag="Paper"></a>
+              <div class="pub-body">
+                <h3 class="pub-title">
+                  <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4106195">FutureScapes: Blending computational models &amp; scenario narratives to design urban futures</a>
+                </h3>
+                <div class="pub-authors"><strong>Krishnan, S.</strong>, van Delden, H., Aydin, N.Y., Comes, T.</div>
+                <div class="pub-venue">EPB: Urban Analytics &amp; City Science · 2024</div>
+                <div class="pub-actions">
+                  <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4106195">→ PDF</a>
+                </div>
               </div>
+            </article>
 
-              <div class="pub-item">
-                <span class="year">2025</span>
-                <a href="https://g20drrwg.preventionweb.net/2024/g20-documents" class="title">G20 Recovery Readiness Assessment Framework <em>— G20 Declaration on Disaster Risk Reduction</em></a>
+            <!-- G20 Recovery -->
+            <article class="pub-card">
+              <a href="https://g20drrwg.preventionweb.net/2024/g20-documents" class="pub-thumb placeholder" data-tag="Framework"></a>
+              <div class="pub-body">
+                <h3 class="pub-title">
+                  <a href="https://g20drrwg.preventionweb.net/2024/g20-documents">G20 Recovery Readiness Assessment Framework</a>
+                </h3>
+                <div class="pub-authors">G20 DRR Working Group, with <strong>Krishnan, S.</strong></div>
+                <div class="pub-venue">G20 Declaration on Disaster Risk Reduction · 2024</div>
+                <div class="pub-actions">
+                  <a href="https://g20drrwg.preventionweb.net/2024/g20-documents">→ Document</a>
+                </div>
               </div>
+            </article>
 
-              <div class="pub-item">
-                <span class="year">2024</span>
-                <a href="https://www.nature.com/articles/s42949-024-00140-5" class="title">TIMEWISE: Temporal dynamics for urban resilience <em>— npj Urban Sustainability</em></a>
+            <!-- TIMEWISE -->
+            <article class="pub-card">
+              <a href="https://www.nature.com/articles/s42949-024-00140-5" class="pub-thumb placeholder" data-tag="Paper"></a>
+              <div class="pub-body">
+                <h3 class="pub-title">
+                  <a href="https://www.nature.com/articles/s42949-024-00140-5">TIMEWISE: Temporal dynamics for urban resilience</a>
+                </h3>
+                <div class="pub-authors"><strong>Krishnan, S.</strong>, Aydin, N.Y., Comes, T.</div>
+                <div class="pub-venue">npj Urban Sustainability · 2024</div>
+                <div class="pub-actions">
+                  <a href="https://www.nature.com/articles/s42949-024-00140-5">→ PDF</a>
+                </div>
               </div>
+            </article>
 
-              <div class="pub-item">
-                <span class="year">2024</span>
-                <a href="#" class="title">Talk · Data-rich vs. Data-poor? Developing Land-Use Models for Urban Resilience <em>— Harvard Salata Institute</em></a>
+            <!-- Harvard talk -->
+            <article class="pub-card">
+              <a href="#" class="pub-thumb placeholder" data-tag="Talk"></a>
+              <div class="pub-body">
+                <h3 class="pub-title">
+                  <a href="#">Data-rich vs. Data-poor: Developing Land-Use Models for Urban Resilience</a>
+                </h3>
+                <div class="pub-authors"><strong>Krishnan, S.</strong></div>
+                <div class="pub-venue">Invited Talk · Harvard Salata Institute · 2024</div>
+                <div class="pub-actions">
+                  <a href="#">→ Slides</a>
+                </div>
               </div>
+            </article>
 
-              <div class="pub-item">
-                <span class="year">YEAR</span>
-                <a href="#" class="title">Talk · [topic] <em>— Columbia University</em></a>
+            <!-- Columbia talk -->
+            <article class="pub-card">
+              <a href="#" class="pub-thumb placeholder" data-tag="Talk"></a>
+              <div class="pub-body">
+                <h3 class="pub-title">
+                  <a href="#">[Talk title]</a>
+                </h3>
+                <div class="pub-authors"><strong>Krishnan, S.</strong></div>
+                <div class="pub-venue">Invited Talk · Columbia University · [year]</div>
+                <div class="pub-actions">
+                  <a href="#">→ Slides</a>
+                </div>
               </div>
+            </article>
 
-            </div>
             <a href="publications.html" class="col-link">All publications →</a>
           </div>
 
@@ -618,12 +755,11 @@ footer {
                 2. Click the "..." menu on the top-right of the post
                 3. Select "Embed this post"
                 4. Copy the <iframe> code LinkedIn gives you
-                5. Paste it inside the .linkedin-embed div below, replacing the placeholder iframe
-                6. Duplicate the whole .linkedin-embed block for each additional post
+                5. Replace the iframe src below with that URL
               -->
               <div class="linkedin-embed">
                 <div class="linkedin-label">From LinkedIn</div>
-                <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:REPLACE_WITH_POST_ID" height="540" width="504" frameborder="0" allowfullscreen="" title="Embedded LinkedIn post"></iframe>
+                <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7465087926670913536?collapsed=1" height="593" width="504" frameborder="0" allowfullscreen="" title="Embedded LinkedIn post"></iframe>
               </div>
 
               <div class="news-item">
